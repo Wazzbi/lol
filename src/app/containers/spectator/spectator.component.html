@@ -36,12 +36,20 @@
     <nav mat-tab-nav-bar>
       <a
         mat-tab-link
-        *ngFor="let link of links"
-        (click)="activeLink = link"
+        *ngFor="let link of links; let i = index"
+        [routerLink]="link.path"
+        (click)="activeLink = link; activeTab(i)"
         [active]="activeLink == link"
       >
-        {{ link }}</a
+        {{ link.label }}</a
       >
     </nav>
+
+    <div [ngSwitch]="acTab">
+      <app-current-match *ngSwitchCase="0"></app-current-match>
+      <div *ngSwitchCase="1">444444444</div>
+      <div *ngSwitchCase="2">77777dffsvsv</div>
+      <div *ngSwitchDefault>hell yeah</div>
+    </div>
   </div>
 </div>
