@@ -1,15 +1,47 @@
-<form>
-  <input
-    type="text"
-    name="name"
-    [(ngModel)]="name"
-    placeholder="Summoner name..."
-  />
-  <button type="submit" (click)="getSummoner()">Submit</button>
-</form>
+<div class="container">
+  <mat-form-field class="form-field">
+    <mat-label>Summoner name</mat-label>
+    <input matInput type="text" [(ngModel)]="name" />
 
-<div *ngIf="summoner$ | async; let summoner">
-  <p>name: {{ summoner.name }}</p>
-  <p>level: {{ summoner.summonerLevel }}</p>
-  <p>id: {{ summoner.id }}</p>
+    <button
+      mat-button
+      *ngIf="name"
+      matSuffix
+      mat-icon-button
+      aria-label="Done"
+      (click)="getSummoner()"
+    >
+      <mat-icon>done</mat-icon>
+    </button>
+
+    <button
+      mat-button
+      *ngIf="name"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="name = ''; showTabs = false"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div *ngIf="summoner$ | async; let summoner">
+    <p>name: {{ summoner.name }}</p>
+    <p>level: {{ summoner.summonerLevel }}</p>
+    <p>id: {{ summoner.id }}</p>
+  </div>
+
+  <div class="navigator" *ngIf="showTabs">
+    <nav mat-tab-nav-bar>
+      <a
+        mat-tab-link
+        *ngFor="let link of links"
+        (click)="activeLink = link"
+        [active]="activeLink == link"
+      >
+        {{ link }}</a
+      >
+    </nav>
+  </div>
 </div>

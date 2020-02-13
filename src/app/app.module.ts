@@ -1,3 +1,4 @@
+import { CurrentMatchComponent } from "./containers/current-match/current-match.component";
 import { SpectatorService } from "./services/spectator.service";
 import { AppRoutingModule } from "./app-routing.module";
 import { SpectatorComponent } from "./containers/spectator/spectator.component";
@@ -14,11 +15,13 @@ import { HttpModule } from "@angular/http";
 import {
   MatInputModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatButtonToggleModule,
+  MatTabsModule
 } from "@angular/material";
 
 @NgModule({
-  declarations: [AppComponent, SpectatorComponent],
+  declarations: [AppComponent, SpectatorComponent, CurrentMatchComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -28,7 +31,9 @@ import {
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    HttpModule
+    HttpModule,
+    MatButtonToggleModule,
+    MatTabsModule
   ],
   providers: [SpectatorService],
   bootstrap: [AppComponent]
