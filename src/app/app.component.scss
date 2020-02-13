@@ -1,0 +1,36 @@
+.container {
+  display: grid;
+  grid-template-columns: 200px auto 200px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header header"
+    "left main right"
+    "footer footer footer";
+
+  text-align: center;
+}
+
+.header {
+  grid-area: header;
+  border: 1px solid black;
+}
+.main {
+  grid-area: main;
+  border: 1px solid black;
+}
+.left {
+  grid-area: left;
+  border: 1px solid black;
+}
+.right {
+  grid-area: right;
+  border: 1px solid black;
+}
+.footer {
+  grid-area: footer;
+  border: 1px solid black;
+}
+.form-field {
+  width: 200px;
+  margin-top: 20px;
+}

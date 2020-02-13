@@ -1,0 +1,15 @@
+<form>
+  <input
+    type="text"
+    name="name"
+    [(ngModel)]="name"
+    placeholder="Summoner name..."
+  />
+  <button type="submit" (click)="getSummoner()">Submit</button>
+</form>
+
+<div *ngIf="summoner$ | async; let summoner">
+  <p>name: {{ summoner.name }}</p>
+  <p>level: {{ summoner.summonerLevel }}</p>
+  <p>id: {{ summoner.id }}</p>
+</div>
