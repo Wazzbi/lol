@@ -26,7 +26,7 @@
     </button>
   </mat-form-field>
 
-  <div *ngIf="summoner$ | async; let summoner">
+  <div *ngIf="summoner">
     <p>name: {{ summoner.name }}</p>
     <p>level: {{ summoner.summonerLevel }}</p>
     <p>id: {{ summoner.id }}</p>
@@ -37,18 +37,20 @@
       <a
         mat-tab-link
         *ngFor="let link of links; let i = index"
-        [routerLink]="link.path"
         (click)="activeLink = link; activeTab(i)"
         [active]="activeLink == link"
       >
-        {{ link.label }}</a
+        {{ link }}</a
       >
     </nav>
 
     <div [ngSwitch]="acTab">
-      <app-current-match *ngSwitchCase="0"></app-current-match>
-      <div *ngSwitchCase="1">444444444</div>
-      <div *ngSwitchCase="2">77777dffsvsv</div>
+      <app-summoner-detail *ngSwitchCase="0"></app-summoner-detail>
+      <app-match-history
+        *ngSwitchCase="1"
+        [matchHistory]="matchHistory"
+      ></app-match-history>
+      <app-current-match *ngSwitchCase="2"></app-current-match>
       <div *ngSwitchDefault>hell yeah</div>
     </div>
   </div>

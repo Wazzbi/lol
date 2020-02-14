@@ -1,3 +1,5 @@
+import { MatchHistoryComponent } from "./containers/match-history/match-history.component";
+import { SummonerDetailComponent } from "./containers/summoner-detail/summoner-detail.component";
 import { CurrentMatchComponent } from "./containers/current-match/current-match.component";
 import { SpectatorService } from "./services/spectator.service";
 import { AppRoutingModule } from "./app-routing.module";
@@ -21,7 +23,13 @@ import {
 } from "@angular/material";
 
 @NgModule({
-  declarations: [AppComponent, SpectatorComponent, CurrentMatchComponent],
+  declarations: [
+    AppComponent,
+    SpectatorComponent,
+    CurrentMatchComponent,
+    SummonerDetailComponent,
+    MatchHistoryComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
