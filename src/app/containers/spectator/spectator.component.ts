@@ -19,6 +19,17 @@ export class SpectatorComponent implements OnInit {
   links = ["Summoner Detail", "Match History", "Spectator"];
   activeLink = this.links[0];
 
+  /**
+    SUMMONER:
+    id: "orkPHmqOIMppb67hPx6trxLvfzLjNWvcnPDmklz39gCF0Ks"
+    accountId: "RdpCc7FvtRjmuE4QmRaMZexFsWgQVld45LmLAaxIeIfqDA"
+    puuid: "mexLQVen2B55-h-1w5GNnV6JlkiSk4ACZTOMTgkVQYd6FquJ22YTCu0kR4BzeiB69MNmK5Oc12T79A"
+    name: "Herdyn"
+    profileIconId: 4220
+    revisionDate: 1581434022000
+    summonerLevel: 119
+  */
+
   constructor(private specService: SpectatorService) {}
 
   ngOnInit() {}

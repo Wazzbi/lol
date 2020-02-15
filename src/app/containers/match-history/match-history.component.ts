@@ -9,7 +9,17 @@ import { Component, OnInit, Input } from "@angular/core";
 export class MatchHistoryComponent implements OnInit {
   @Input() matchHistory: Match[];
 
-  test = [1, 2, 3, 4, 5];
+  /**
+    MATCH:
+    platformId: "EUN1"
+    gameId: 2382159344
+    champion: 11
+    queue: 420
+    season: 13
+    timestamp: 1581719043879
+    role: "DUO_SUPPORT"
+    lane: "MID"
+  */
 
   constructor() {}
 

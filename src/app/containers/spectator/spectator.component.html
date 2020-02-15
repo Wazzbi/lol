@@ -30,6 +30,7 @@
     <p>name: {{ summoner.name }}</p>
     <p>level: {{ summoner.summonerLevel }}</p>
     <p>id: {{ summoner.id }}</p>
+    <p>acc id: {{ summoner.accountId }}</p>
   </div>
 
   <div class="navigator" *ngIf="showTabs">
@@ -46,11 +47,14 @@
 
     <div [ngSwitch]="acTab">
       <app-summoner-detail *ngSwitchCase="0"></app-summoner-detail>
+
       <app-match-history
         *ngSwitchCase="1"
         [matchHistory]="matchHistory"
       ></app-match-history>
+
       <app-current-match *ngSwitchCase="2"></app-current-match>
+
       <div *ngSwitchDefault>hell yeah</div>
     </div>
   </div>

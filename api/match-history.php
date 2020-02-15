@@ -13,7 +13,7 @@ header("Access-Control-Allow-Origin: *");
 if(isset($_POST))
 {
     $_ACC_ID = file_get_contents("php://input");
-    $_API_KEY = "RGAPI-3d237721-d8ca-45e9-9b76-82ff6db31282";
+    $_API_KEY = "RGAPI-1c998c16-634a-4ba2-a775-5ba6364fc712";
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
