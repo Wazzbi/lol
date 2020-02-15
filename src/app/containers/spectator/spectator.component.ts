@@ -1,3 +1,4 @@
+import { SummonerLeague } from "./../../models/summoner-league";
 import { Match } from "./../../models/match";
 import { Summoner } from "./../../models/summoner";
 import { SpectatorService } from "./../../services/spectator.service";
@@ -10,12 +11,17 @@ import { Observable } from "rxjs";
   styleUrls: ["./spectator.component.scss"]
 })
 export class SpectatorComponent implements OnInit {
+  //importy ze služeb
   summoner: Summoner = null;
+  matchHistory: Match[];
+  summLeague: SummonerLeague = null;
+
+  //settery
   name: string = "";
   showTabs: boolean = false;
   acTab: Number = 0;
-  matchHistory: Match[];
 
+  //záložky
   links = ["Summoner Detail", "Match History", "Spectator"];
   activeLink = this.links[0];
 
@@ -39,8 +45,10 @@ export class SpectatorComponent implements OnInit {
     this.specService.getSummonerData(this.name).subscribe(res => {
       this.summoner = res;
       console.log("summoner: ", this.summoner);
+
       //ukázat taby
       this.showTabs = true;
+
       //získat data o posledních hrách
       this.specService
         .getMatchHistory(this.summoner.accountId)
@@ -48,6 +56,12 @@ export class SpectatorComponent implements OnInit {
           this.matchHistory = res;
           console.log("matchHistory: ", this.matchHistory);
         });
+
+      //získat data o hráčově lize
+      this.specService.getSummonerLeague(this.summoner.id).subscribe(res => {
+        this.summLeague = res;
+        console.log("summoner league: ", this.summLeague);
+      });
     });
   }
 
