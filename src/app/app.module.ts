@@ -19,7 +19,8 @@ import {
   MatButtonModule,
   MatIconModule,
   MatButtonToggleModule,
-  MatTabsModule
+  MatTabsModule,
+  MatSelectModule
 } from "@angular/material";
 
 @NgModule({
@@ -41,7 +42,8 @@ import {
     MatIconModule,
     HttpModule,
     MatButtonToggleModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSelectModule
   ],
   providers: [SpectatorService],
   bootstrap: [AppComponent]

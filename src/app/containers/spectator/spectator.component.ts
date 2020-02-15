@@ -22,6 +22,7 @@ export class SpectatorComponent implements OnInit {
   name: string = "";
   showTabs: boolean = false;
   acTab: Number = 0;
+  selectedRegion = "option7";
 
   //záložky
   links = ["Summoner Detail", "Match History", "Spectator"];
