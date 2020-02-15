@@ -26,13 +26,6 @@
     </button>
   </mat-form-field>
 
-  <div *ngIf="summoner">
-    <p>name: {{ summoner.name }}</p>
-    <p>level: {{ summoner.summonerLevel }}</p>
-    <p>id: {{ summoner.id }}</p>
-    <p>acc id: {{ summoner.accountId }}</p>
-  </div>
-
   <div class="navigator" *ngIf="showTabs">
     <nav mat-tab-nav-bar>
       <a
@@ -57,7 +50,10 @@
         [matchHistory]="matchHistory"
       ></app-match-history>
 
-      <app-current-match *ngSwitchCase="2"></app-current-match>
+      <app-current-match
+        *ngSwitchCase="2"
+        [spectatorData]="spectatorData"
+      ></app-current-match>
 
       <div *ngSwitchDefault>hell yeah</div>
     </div>

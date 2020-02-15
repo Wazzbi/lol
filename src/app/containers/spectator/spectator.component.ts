@@ -1,3 +1,4 @@
+import { SpectatorData } from "./../../models/spectator-data";
 import { SummonerLeague } from "./../../models/summoner-league";
 import { Match } from "./../../models/match";
 import { Summoner } from "./../../models/summoner";
@@ -15,6 +16,7 @@ export class SpectatorComponent implements OnInit {
   summoner: Summoner = null;
   matchHistory: Match[];
   summLeague: SummonerLeague = null;
+  spectatorData: SpectatorData;
 
   //settery
   name: string = "";
@@ -42,6 +44,7 @@ export class SpectatorComponent implements OnInit {
 
   public getSummoner(): void {
     //získat data o hráči
+    console.log("input summoner name: ", this.name);
     this.specService.getSummonerData(this.name).subscribe(res => {
       this.summoner = res;
       console.log("summoner: ", this.summoner);
@@ -61,6 +64,12 @@ export class SpectatorComponent implements OnInit {
       this.specService.getSummonerLeague(this.summoner.id).subscribe(res => {
         this.summLeague = res;
         console.log("summoner league: ", this.summLeague);
+      });
+
+      //získat data o součastné hře
+      this.specService.getSpectatrData(this.summoner.id).subscribe(res => {
+        this.spectatorData = res;
+        console.log("spectator data: ", this.spectatorData);
       });
     });
   }

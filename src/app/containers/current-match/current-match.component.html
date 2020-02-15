@@ -1,3 +1,4 @@
-<p>
-  current-match works!
-</p>
+<div *ngIf="spectatorData.status">Playes is not in game at the moment</div>
+<div *ngIf="spectatorData.gameMode">
+  <span>{{ spectatorData.gameMode }}</span>
+</div>

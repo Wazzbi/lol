@@ -1,3 +1,4 @@
+import { SpectatorData } from "./../models/spectator-data";
 import { SummonerLeague } from "./../models/summoner-league";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
@@ -14,6 +15,7 @@ export class SpectatorService {
   SUMMONER_URL = "http://localhost/riotApi/lol/api/summoner.php";
   MATCH_URL = "http://localhost/riotApi/lol/api/match-history.php";
   SUMM_LEAGUE_URL = "http://localhost/riotApi/lol/api/summoner-league.php";
+  SPECTATOR_URL = "http://localhost/riotApi/lol/api/spectator.php";
 
   getSummonerData(name: string): Observable<Summoner> {
     return this.httpClient.post<Summoner>(this.SUMMONER_URL, name);
@@ -25,5 +27,9 @@ export class SpectatorService {
 
   getMatchHistory(accID: string): Observable<Match[]> {
     return this.httpClient.post<Match[]>(this.MATCH_URL, accID);
+  }
+
+  getSpectatrData(id: string): Observable<SpectatorData> {
+    return this.httpClient.post<SpectatorData>(this.SPECTATOR_URL, id);
   }
 }
