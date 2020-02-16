@@ -18,7 +18,7 @@ export class SpectatorService {
   SPECTATOR_URL = "http://localhost/riotApi/lol/api/spectator.php";
 
   getSummonerData(name: string): Observable<Summoner> {
-    return this.httpClient.post<Summoner>(this.SUMMONER_URL, name);
+    return this.httpClient.post<Summoner>(this.SUMMONER_URL, `name=${name}`);
   }
 
   getSummonerLeague(id: string): Observable<SummonerLeague> {

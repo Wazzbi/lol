@@ -12,12 +12,16 @@ header("Access-Control-Allow-Origin: *");
 
 if(isset($_POST))
 {
-    $_NAME = file_get_contents("php://input");
+    $input = file_get_contents("php://input");
+    $data = array();
+    parse_str($input, $data);
+    $_NAME = $data["name"];
+    $_REGION = "EUN1";
     $_API_KEY = "RGAPI-1c998c16-634a-4ba2-a775-5ba6364fc712";
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_URL, "https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/".$_NAME."?api_key=".$_API_KEY);
+    curl_setopt($ch, CURLOPT_URL, "https://".$_REGION.".api.riotgames.com/lol/summoner/v4/summoners/by-name/".$_NAME."?api_key=".$_API_KEY);
     $content = curl_exec($ch);
     echo $content;
 }
