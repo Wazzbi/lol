@@ -1,18 +1,10 @@
 <div class="container">
   <mat-form-field>
     <mat-label>Select an option</mat-label>
-    <mat-select [(value)]="selectedRegion" [(ngModel)]="selectedRegion">
-      <mat-option value="option1">RU</mat-option>
-      <mat-option value="option2">KR</mat-option>
-      <mat-option value="option3">BR1</mat-option>
-      <mat-option value="option4">OC1</mat-option>
-      <mat-option value="option5">JP1</mat-option>
-      <mat-option value="option6">NA1</mat-option>
-      <mat-option value="option7">EUN1</mat-option>
-      <mat-option value="option8">EUW1</mat-option>
-      <mat-option value="option9">TR1</mat-option>
-      <mat-option value="option10">LA1</mat-option>
-      <mat-option value="option11">LA2</mat-option>
+    <mat-select [(ngModel)]="selectedRegion">
+      <mat-option [(value)]="region.value" *ngFor="let region of regions">
+        {{ region.value }}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 

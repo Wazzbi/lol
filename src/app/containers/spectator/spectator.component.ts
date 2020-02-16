@@ -22,7 +22,22 @@ export class SpectatorComponent implements OnInit {
   name: string = "";
   showTabs: boolean = false;
   acTab: Number = 0;
-  selectedRegion = "option7";
+
+  //regiony
+  selectedRegion = "";
+  regions = [
+    { name: "option1", value: "RU" },
+    { name: "option2", value: "KR" },
+    { name: "option3", value: "BR1" },
+    { name: "option4", value: "OC1" },
+    { name: "option5", value: "JP1" },
+    { name: "option6", value: "NA1" },
+    { name: "option7", value: "EUN1" },
+    { name: "option8", value: "EUW1" },
+    { name: "option9", value: "TR1" },
+    { name: "option10", value: "LA1" },
+    { name: "option11", value: "LA2" }
+  ];
 
   //záložky
   links = ["Summoner Detail", "Match History", "Spectator"];
@@ -45,34 +60,40 @@ export class SpectatorComponent implements OnInit {
 
   public getSummoner(): void {
     //získat data o hráči
-    console.log("input summoner name: ", this.name);
-    this.specService.getSummonerData(this.name).subscribe(res => {
-      this.summoner = res;
-      console.log("summoner: ", this.summoner);
+    console.log("input: ", this.name + " " + this.selectedRegion);
+    this.specService
+      .getSummonerData(this.name, this.selectedRegion)
+      .subscribe(res => {
+        this.summoner = res;
+        console.log("summoner: ", this.summoner);
 
-      //ukázat taby
-      this.showTabs = true;
+        //získat data o hráčově lize
+        this.specService
+          .getSummonerLeague(this.summoner.id, this.selectedRegion)
+          .subscribe(res => {
+            this.summLeague = res;
+            console.log("summoner league: ", this.summLeague);
+          });
 
-      //získat data o posledních hrách
-      this.specService
-        .getMatchHistory(this.summoner.accountId)
-        .subscribe(res => {
-          this.matchHistory = res;
-          console.log("matchHistory: ", this.matchHistory);
-        });
+        //ukázat taby
+        this.showTabs = true;
 
-      //získat data o hráčově lize
-      this.specService.getSummonerLeague(this.summoner.id).subscribe(res => {
-        this.summLeague = res;
-        console.log("summoner league: ", this.summLeague);
+        //získat data o posledních hrách
+        this.specService
+          .getMatchHistory(this.summoner.accountId, this.selectedRegion)
+          .subscribe(res => {
+            this.matchHistory = res;
+            console.log("matchHistory: ", this.matchHistory);
+          });
+
+        //získat data o součastné hře
+        this.specService
+          .getSpectatrData(this.summoner.id, this.selectedRegion)
+          .subscribe(res => {
+            this.spectatorData = res;
+            console.log("spectator data: ", this.spectatorData);
+          });
       });
-
-      //získat data o součastné hře
-      this.specService.getSpectatrData(this.summoner.id).subscribe(res => {
-        this.spectatorData = res;
-        console.log("spectator data: ", this.spectatorData);
-      });
-    });
   }
 
   //zobrazuje aktivní tab

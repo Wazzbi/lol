@@ -17,19 +17,31 @@ export class SpectatorService {
   SUMM_LEAGUE_URL = "http://localhost/riotApi/lol/api/summoner-league.php";
   SPECTATOR_URL = "http://localhost/riotApi/lol/api/spectator.php";
 
-  getSummonerData(name: string): Observable<Summoner> {
-    return this.httpClient.post<Summoner>(this.SUMMONER_URL, `name=${name}`);
+  getSummonerData(name: string, region: string): Observable<Summoner> {
+    return this.httpClient.post<Summoner>(
+      this.SUMMONER_URL,
+      `name=${name}&region=${region}`
+    );
   }
 
-  getSummonerLeague(id: string): Observable<SummonerLeague> {
-    return this.httpClient.post<SummonerLeague>(this.SUMM_LEAGUE_URL, id);
+  getSummonerLeague(id: string, region: string): Observable<SummonerLeague> {
+    return this.httpClient.post<SummonerLeague>(
+      this.SUMM_LEAGUE_URL,
+      `id=${id}&region=${region}`
+    );
   }
 
-  getMatchHistory(accID: string): Observable<Match[]> {
-    return this.httpClient.post<Match[]>(this.MATCH_URL, accID);
+  getMatchHistory(accID: string, region: string): Observable<Match[]> {
+    return this.httpClient.post<Match[]>(
+      this.MATCH_URL,
+      `accID=${accID}&region=${region}`
+    );
   }
 
-  getSpectatrData(id: string): Observable<SpectatorData> {
-    return this.httpClient.post<SpectatorData>(this.SPECTATOR_URL, id);
+  getSpectatrData(id: string, region: string): Observable<SpectatorData> {
+    return this.httpClient.post<SpectatorData>(
+      this.SPECTATOR_URL,
+      `id=${id}&region=${region}`
+    );
   }
 }

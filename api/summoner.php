@@ -15,9 +15,10 @@ if(isset($_POST))
     $input = file_get_contents("php://input");
     $data = array();
     parse_str($input, $data);
+    
     $_NAME = $data["name"];
-    $_REGION = "EUN1";
-    $_API_KEY = "RGAPI-1c998c16-634a-4ba2-a775-5ba6364fc712";
+    $_REGION = $data["region"];
+    $_API_KEY = "RGAPI-9950f6ed-ce9e-4c33-bbc9-fad6aa1ae282";
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
