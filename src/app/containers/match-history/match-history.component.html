@@ -1,3 +1,4 @@
+<div *ngIf="matchHistory.status">Match History Not Found</div>
 <div *ngFor="let match of matchHistory.matches">
   {{ match.gameId }}
 </div>
