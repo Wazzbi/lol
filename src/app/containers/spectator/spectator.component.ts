@@ -22,6 +22,7 @@ export class SpectatorComponent implements OnInit {
   name: string = "";
   showTabs: boolean = false;
   acTab: Number = 0;
+  wrongInput: boolean = false;
 
   //regiony
   selectedRegion = "";
@@ -75,9 +76,6 @@ export class SpectatorComponent implements OnInit {
             console.log("summoner league: ", this.summLeague);
           });
 
-        //ukázat taby
-        this.showTabs = true;
-
         //získat data o posledních hrách
         this.specService
           .getMatchHistory(this.summoner.accountId, this.selectedRegion)
@@ -93,6 +91,11 @@ export class SpectatorComponent implements OnInit {
             this.spectatorData = res;
             console.log("spectator data: ", this.spectatorData);
           });
+
+        //ukázat taby
+        this.showTabs = this.summoner.id !== undefined ? true : false;
+        //ukázat pozn, že summoner nebyl nalezen
+        this.wrongInput = this.showTabs === false ? true : false;
       });
   }
 

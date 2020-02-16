@@ -1,3 +1,7 @@
-<div *ngIf="summLeague.status">Summoner Data Not Found</div>
-<h3>{{ summoner.name }}</h3>
-<span>{{ summLeague[0].tier }}</span>
+<div>
+  <h3>{{ summoner.name }}</h3>
+  <span *ngIf="summLeague[0]; else showThis">{{ summLeague[0].tier }}</span>
+  <ng-template #showThis>
+    Summoner Has No Tier or Wrong Region
+  </ng-template>
+</div>

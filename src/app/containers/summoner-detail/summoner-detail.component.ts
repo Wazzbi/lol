@@ -7,6 +7,7 @@ import {
   OnChanges,
   SimpleChanges
 } from "@angular/core";
+import { empty } from "rxjs";
 
 @Component({
   selector: "app-summoner-detail",
@@ -15,9 +16,7 @@ import {
 })
 export class SummonerDetailComponent implements OnInit {
   @Input() summoner: Summoner;
-  @Input() summLeague: SummonerLeague;
-
-  //summLeague: SummonerLeague = null;
+  @Input() summLeague: SummonerLeague[];
 
   constructor() {}
 
