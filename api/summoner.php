@@ -18,7 +18,7 @@ if(isset($_POST))
     
     $_NAME = $data["name"];
     $_REGION = $data["region"];
-    $_API_KEY = "RGAPI-9950f6ed-ce9e-4c33-bbc9-fad6aa1ae282";
+    $_API_KEY = "RGAPI-454ed027-c5ac-4845-89f4-94c6a13724f6";
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

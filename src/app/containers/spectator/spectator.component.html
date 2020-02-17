@@ -1,6 +1,6 @@
 <div class="container">
   <mat-form-field>
-    <mat-label>Select an option</mat-label>
+    <mat-label>Select region</mat-label>
     <mat-select [(ngModel)]="selectedRegion">
       <mat-option [(value)]="region.value" *ngFor="let region of regions">
         {{ region.value }}

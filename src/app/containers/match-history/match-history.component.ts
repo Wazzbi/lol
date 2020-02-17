@@ -1,5 +1,5 @@
-import { Match } from "./../../models/match";
 import { Component, OnInit, Input } from "@angular/core";
+import { MatchHistory } from "../../models/matchHistory";
 
 @Component({
   selector: "app-match-history",
@@ -7,18 +7,14 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./match-history.component.scss"]
 })
 export class MatchHistoryComponent implements OnInit {
-  @Input() matchHistory: Match[];
+  @Input() matchHistory: MatchHistory;
 
   /**
-    MATCH:
-    platformId: "EUN1"
-    gameId: 2382159344
-    champion: 11
-    queue: 420
-    season: 13
-    timestamp: 1581719043879
-    role: "DUO_SUPPORT"
-    lane: "MID"
+    MATCHHISTORY:
+    matches: Match[];
+    startIndex: number;
+    endIndex: number;
+    totalGames: number;
   */
 
   constructor() {}

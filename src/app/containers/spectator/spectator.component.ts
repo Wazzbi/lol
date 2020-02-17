@@ -92,10 +92,12 @@ export class SpectatorComponent implements OnInit {
             console.log("spectator data: ", this.spectatorData);
           });
 
-        //ukázat taby
-        this.showTabs = this.summoner.id !== undefined ? true : false;
-        //ukázat pozn, že summoner nebyl nalezen
-        this.wrongInput = this.showTabs === false ? true : false;
+        setTimeout(() => {
+          //ukázat taby
+          this.showTabs = this.summoner.id !== undefined ? true : false;
+          //ukázat pozn, že summoner nebyl nalezen
+          this.wrongInput = this.showTabs === false ? true : false;
+        }, 1000);
       });
   }
 
