@@ -1,5 +1,4 @@
-<!--<div *ngIf="spectatorData.status">Playes is not in game at the moment</div>-->
 <div *ngIf="spectatorData.gameMode; else error">
   <span>{{ spectatorData.gameMode }}</span>
 </div>
-<ng-template #error>Player is not in game at the moment</ng-template>
+<ng-template #error>Player Is Not In Game At The Momment</ng-template>

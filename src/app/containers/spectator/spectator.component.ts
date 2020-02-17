@@ -23,6 +23,7 @@ export class SpectatorComponent implements OnInit {
   showTabs: boolean = false;
   acTab: Number = 0;
   wrongInput: boolean = false;
+  isLoading: boolean;
 
   //regiony
   selectedRegion = "";
@@ -60,6 +61,10 @@ export class SpectatorComponent implements OnInit {
   ngOnInit() {}
 
   public getSummoner(): void {
+    this.showTabs = false;
+    this.isLoading = true;
+    this.wrongInput = false;
+
     //získat data o hráči
     console.log("input: ", this.name + " " + this.selectedRegion);
     this.specService
@@ -74,30 +79,30 @@ export class SpectatorComponent implements OnInit {
           .subscribe(res => {
             this.summLeague = res;
             console.log("summoner league: ", this.summLeague);
-          });
 
-        //získat data o posledních hrách
-        this.specService
-          .getMatchHistory(this.summoner.accountId, this.selectedRegion)
-          .subscribe(res => {
-            this.matchHistory = res;
-            console.log("matchHistory: ", this.matchHistory);
-          });
+            //získat data o posledních hrách
+            this.specService
+              .getMatchHistory(this.summoner.accountId, this.selectedRegion)
+              .subscribe(res => {
+                this.matchHistory = res;
+                console.log("matchHistory: ", this.matchHistory);
 
-        //získat data o součastné hře
-        this.specService
-          .getSpectatrData(this.summoner.id, this.selectedRegion)
-          .subscribe(res => {
-            this.spectatorData = res;
-            console.log("spectator data: ", this.spectatorData);
-          });
+                //získat data o součastné hře
+                this.specService
+                  .getSpectatrData(this.summoner.id, this.selectedRegion)
+                  .subscribe(res => {
+                    this.spectatorData = res;
+                    console.log("spectator data: ", this.spectatorData);
 
-        setTimeout(() => {
-          //ukázat taby
-          this.showTabs = this.summoner.id !== undefined ? true : false;
-          //ukázat pozn, že summoner nebyl nalezen
-          this.wrongInput = this.showTabs === false ? true : false;
-        }, 1000);
+                    this.isLoading = false;
+                    //ukázat taby
+                    this.showTabs =
+                      this.summoner.id !== undefined ? true : false;
+                    //ukázat pozn, že summoner nebyl nalezen
+                    this.wrongInput = this.showTabs === false ? true : false;
+                  });
+              });
+          });
       });
   }
 

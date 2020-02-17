@@ -1,3 +1,4 @@
+import { LoadingComponent } from "./containers/loading/loading.component";
 import { MatchHistoryComponent } from "./containers/match-history/match-history.component";
 import { SummonerDetailComponent } from "./containers/summoner-detail/summoner-detail.component";
 import { CurrentMatchComponent } from "./containers/current-match/current-match.component";
@@ -20,7 +21,8 @@ import {
   MatIconModule,
   MatButtonToggleModule,
   MatTabsModule,
-  MatSelectModule
+  MatSelectModule,
+  MatProgressSpinnerModule
 } from "@angular/material";
 
 @NgModule({
@@ -29,7 +31,8 @@ import {
     SpectatorComponent,
     CurrentMatchComponent,
     SummonerDetailComponent,
-    MatchHistoryComponent
+    MatchHistoryComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import {
     HttpModule,
     MatButtonToggleModule,
     MatTabsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   providers: [SpectatorService],
   bootstrap: [AppComponent]
