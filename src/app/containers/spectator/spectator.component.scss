@@ -8,5 +8,12 @@
 .form-field {
   width: 200px;
   margin-top: 20px;
-  margin-left: 10px;
+  margin-left: 30px;
+}
+
+.initPic {
+  margin-top: 50px;
+  filter: grayscale(100%) drop-shadow(5px 5px 5px #222);
+  width: 440px;
+  height: 290px;
 }

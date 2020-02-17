@@ -4,7 +4,6 @@ import { Match } from "./../../models/match";
 import { Summoner } from "./../../models/summoner";
 import { SpectatorService } from "./../../services/spectator.service";
 import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
 
 @Component({
   selector: "app-spectator",
@@ -24,6 +23,7 @@ export class SpectatorComponent implements OnInit {
   acTab: Number = 0;
   wrongInput: boolean = false;
   isLoading: boolean;
+  firstTime: boolean = true;
 
   //regiony
   selectedRegion = "";
@@ -45,6 +45,9 @@ export class SpectatorComponent implements OnInit {
   links = ["Summoner Detail", "Match History", "Spectator"];
   activeLink = this.links[0];
 
+  //úvodní obrázek
+  pic_URL: string = "../../../assets/pinguin-min.png";
+
   /**
     SUMMONER:
     id: "orkPHmqOIMppb67hPx6trxLvfzLjNWvcnPDmklz39gCF0Ks"
@@ -64,6 +67,7 @@ export class SpectatorComponent implements OnInit {
     this.showTabs = false;
     this.isLoading = true;
     this.wrongInput = false;
+    this.firstTime = false;
 
     //získat data o hráči
     console.log("input: ", this.name + " " + this.selectedRegion);

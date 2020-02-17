@@ -1,3 +1,4 @@
+import { LeagueDetailComponent } from "./components/league-detail/league-detail.component";
 import { LoadingComponent } from "./containers/loading/loading.component";
 import { MatchHistoryComponent } from "./containers/match-history/match-history.component";
 import { SummonerDetailComponent } from "./containers/summoner-detail/summoner-detail.component";
@@ -32,7 +33,8 @@ import {
     CurrentMatchComponent,
     SummonerDetailComponent,
     MatchHistoryComponent,
-    LoadingComponent
+    LoadingComponent,
+    LeagueDetailComponent
   ],
   imports: [
     BrowserModule,

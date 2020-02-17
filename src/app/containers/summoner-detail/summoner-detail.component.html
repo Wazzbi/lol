@@ -1,7 +1,12 @@
 <div>
-  <h3>{{ summoner.name }}</h3>
-  <span *ngIf="summLeague[0]; else showThis">{{ summLeague[0].tier }}</span>
+  <div *ngIf="summoner.name; else showThis">
+    <h1>{{ summoner.name }}</h1>
+    <img class="profileIcon" [src]="icon_URL" alt="profile icon" />
+  </div>
+
   <ng-template #showThis>
     Summoner Not Found
   </ng-template>
+
+  <app-league-detail [summLeague]="summLeague"></app-league-detail>
 </div>

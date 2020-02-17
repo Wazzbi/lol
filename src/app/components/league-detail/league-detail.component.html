@@ -1,0 +1,22 @@
+<div>
+  <div *ngIf="summLeague[0]; else showThis">
+    <span>Tier: {{ summLeague[0].tier }}</span>
+    <br />
+    <span>Rank: {{ summLeague[0].rank }}</span>
+    <br />
+    <span>LP: {{ summLeague[0].leaguePoints }}</span>
+    <br />
+    <span>Wins: {{ summLeague[0].wins }}</span>
+    <br />
+    <span>Losses: {{ summLeague[0].losses }}</span>
+    <br />
+
+    <span *ngIf="summLeague[0].veteran">Veteran</span>
+    <span *ngIf="summLeague[0].freshBlood">Fresh Blood</span>
+    <span *ngIf="summLeague[0].hotStreak">Hot Streak</span>
+    <span *ngIf="summLeague[0].inactive">Inactive</span>
+  </div>
+  <ng-template #showThis>
+    League Data Not Found
+  </ng-template>
+</div>

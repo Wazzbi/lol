@@ -1,13 +1,6 @@
 import { SummonerLeague } from "./../../models/summoner-league";
 import { Summoner } from "./../../models/summoner";
-import {
-  Component,
-  OnInit,
-  Input,
-  OnChanges,
-  SimpleChanges
-} from "@angular/core";
-import { empty } from "rxjs";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-summoner-detail",
@@ -18,9 +11,13 @@ export class SummonerDetailComponent implements OnInit {
   @Input() summoner: Summoner;
   @Input() summLeague: SummonerLeague[];
 
+  icon_URL: string;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.icon_URL = `http://ddragon.leagueoflegends.com/cdn/10.3.1/img/profileicon/${this.summoner.profileIconId}.png`;
+  }
 
   /**
     ngOnChanges(changes: SimpleChanges): void {
@@ -37,21 +34,5 @@ export class SummonerDetailComponent implements OnInit {
     profileIconId: 4220
     revisionDate: 1581434022000
     summonerLevel: 119
-  */
-  /**
-    SUMMONER LEAGUE:
-    leagueId: "eb705dc2-0c60-4205-8169-9452a34bc5b2"
-    queueType: "RANKED_SOLO_5x5"
-    tier: "DIAMOND"
-    rank: "I"
-    summonerId: "orkPHmqOIMppb67hPx6trxLvfzLjNWvcnPDmklz39gCF0Ks"
-    summonerName: "Herdyn"
-    leaguePoints: 29
-    wins: 114
-    losses: 109
-    veteran: false
-    inactive: false
-    freshBlood: false
-    hotStreak: false
   */
 }

@@ -1,32 +1,50 @@
 .container {
+  min-height: 100%;
   display: grid;
-  grid-template-columns: 200px auto 200px;
-  grid-template-rows: auto;
+  grid-template-columns: 300px auto 300px;
+  grid-template-rows: 80px 1fr 80px;
   grid-template-areas:
     "header header header"
     "left main right"
     "footer footer footer";
 
   text-align: center;
+  position: relative;
 }
 
 .header {
   grid-area: header;
-  border: 1px solid black;
+  //border: 1px solid black;
+  background-color: #3f51b5;
 }
 .main {
   grid-area: main;
-  border: 1px solid black;
+  //border: 1px solid black;
+
+  min-height: 800px;
+  min-width: 800px;
+
+  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000,
+    inset 0px -8px 24px 5px rgba(0, 0, 0, 0);
 }
 .left {
   grid-area: left;
-  border: 1px solid black;
+  //border: 1px solid black;
+  //background-color: wheat;
+
+  min-height: 800px;
+  min-width: 240px;
 }
 .right {
   grid-area: right;
-  border: 1px solid black;
+  //border: 1px solid black;
+  //background-color: wheat;
+
+  min-height: 800px;
+  min-width: 240px;
 }
 .footer {
   grid-area: footer;
-  border: 1px solid black;
+  //border: 1px solid black;
+  background-color: #3f51b5;
 }
