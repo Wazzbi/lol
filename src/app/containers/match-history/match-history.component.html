@@ -1,6 +1,7 @@
-<div *ngIf="matchHistory.matches; else error">
-  <div *ngFor="let match of matchHistory.matches">
+<div class="history" *ngIf="matchesDetail[0].gameId; else error">
+  <div *ngFor="let match of matchesDetail">
     {{ match.gameId }}
+    {{ match.gameDuration }}
   </div>
 </div>
 <ng-template #error>Match History Not Found</ng-template>

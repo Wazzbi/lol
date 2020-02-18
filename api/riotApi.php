@@ -23,8 +23,9 @@ if(isset($_POST))
     $_NAME = $data["name"]; //getSummonerData
     $_ID = $data["id"]; //getSummonerLeague + getSpectatrData
     $_ACC_ID = $data["accID"]; //getMatchHistory
-    
-    $_API_KEY = "RGAPI-3f447726-4bf1-4d4f-9ae3-c98836589427";
+    $_GAME_ID = $data["gameId"]; //getMatchDetail
+
+    $_API_KEY = "RGAPI-c8f5af5d-ba65-4634-973a-623b55d1ffe0";
 
     error_reporting(0);
 
@@ -57,6 +58,14 @@ if(isset($_POST))
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_URL, "https://".$_REGION.".api.riotgames.com/lol/spectator/v4/active-games/by-summoner/".$_ID."?api_key=".$_API_KEY);
+        $content = curl_exec($ch);
+        echo $content;
+    }
+    //MATCH DETAIL
+    if ($_ACTION == "getMatchDetail") {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_URL, "https://".$_REGION.".api.riotgames.com/lol/match/v4/matches/".$_GAME_ID."?api_key=".$_API_KEY);
         $content = curl_exec($ch);
         echo $content;
     }

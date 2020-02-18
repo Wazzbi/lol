@@ -1,9 +1,10 @@
+import { MatchDetail } from './../../models/match-detail';
 import { SpectatorData } from './../../models/spectator-data';
 import { SummonerLeague } from './../../models/summoner-league';
-import { Match } from './../../models/match';
 import { Summoner } from './../../models/summoner';
 import { SpectatorService } from './../../services/spectator.service';
 import { Component, OnInit } from '@angular/core';
+import { MatchHistory } from 'src/app/models/matchHistory';
 
 @Component({
   selector: 'app-spectator',
@@ -13,9 +14,10 @@ import { Component, OnInit } from '@angular/core';
 export class SpectatorComponent implements OnInit {
   // importy ze služeb
   summoner: Summoner = null;
-  matchHistory: Match[];
+  matchHistory: MatchHistory;
   summLeague: SummonerLeague = null;
   spectatorData: SpectatorData;
+  matchesDetail: MatchDetail[] = [];
 
   // settery
   name = '';
@@ -23,7 +25,7 @@ export class SpectatorComponent implements OnInit {
   acTab = 0;
   wrongInput = false;
   isLoading: boolean;
-  firstTime = false; // ukaž tučňáka => TRUE
+  firstTime = true; // ukaž tučňáka => TRUE
 
   // regiony
   selectedRegion = '';
@@ -64,6 +66,7 @@ export class SpectatorComponent implements OnInit {
   ngOnInit() {}
 
   public getSummoner(): void {
+    this.matchesDetail = [];
     this.showTabs = false;
     this.isLoading = true;
     this.wrongInput = false;
@@ -89,6 +92,15 @@ export class SpectatorComponent implements OnInit {
           this.specService.getSpectatorData(this.summoner.id, this.selectedRegion).subscribe(spectator => {
             this.spectatorData = spectator;
             console.log('spectator data: ', this.spectatorData);
+
+            // riot policy kvůli rate limitu (100 per 2 min) redukce na 10
+            const matches = this.matchHistory.matches;
+            for (let index = 0; index < 10; index++) {
+              this.specService.getMatchDetail(matches[index].gameId, this.selectedRegion).subscribe(matchDetail => {
+                this.matchesDetail.push(matchDetail);
+              });
+            }
+            console.log('matches detail: ', this.matchesDetail);
 
             this.isLoading = false;
             // ukázat taby
