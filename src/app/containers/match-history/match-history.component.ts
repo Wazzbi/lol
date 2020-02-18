@@ -24,15 +24,13 @@ export class MatchHistoryComponent implements OnInit {
   // TODO: toto musí být servisa....
   sortData(matches: MatchDetail[]) {
     for (const match of matches) {
-      let gameType = match.gameType;
-      let gameMode = match.gameMode;
       let summMetaData = match.participantIdentities.find(obj => obj.player.summonerName === this.summoner.name);
       let summIndex = summMetaData.participantId;
       let summGameData = match.participants[summIndex];
 
       let gameData = {
-        gameType: gameType,
-        gameMode: gameMode,
+        gameType: match.gameType,
+        gameMode: match.gameMode,
         summMetaData: summMetaData,
         summGameData: summGameData
       };
