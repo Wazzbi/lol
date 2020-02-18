@@ -63,7 +63,9 @@ export class SpectatorComponent implements OnInit {
 
   constructor(private specService: SpectatorService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // TODO: stahovat data o champech jinak nejde spárovat championId s jpg (potřebuji jméno)
+  }
 
   public getSummoner(): void {
     this.matchesDetail = [];
@@ -95,18 +97,22 @@ export class SpectatorComponent implements OnInit {
 
             // riot policy kvůli rate limitu (100 per 2 min) redukce na 10
             const matches = this.matchHistory.matches;
-            for (let index = 0; index < 10; index++) {
+            let index = 0;
+            for (; index < 10; index++) {
               this.specService.getMatchDetail(matches[index].gameId, this.selectedRegion).subscribe(matchDetail => {
                 this.matchesDetail.push(matchDetail);
+
+                if (this.matchesDetail.length === 10) {
+                  console.log('matches detail: ', this.matchesDetail);
+
+                  this.isLoading = false;
+                  // ukázat taby
+                  this.showTabs = this.summoner.id !== undefined ? true : false;
+                  // ukázat pozn, že summoner nebyl nalezen
+                  this.wrongInput = this.showTabs === false ? true : false;
+                }
               });
             }
-            console.log('matches detail: ', this.matchesDetail);
-
-            this.isLoading = false;
-            // ukázat taby
-            this.showTabs = this.summoner.id !== undefined ? true : false;
-            // ukázat pozn, že summoner nebyl nalezen
-            this.wrongInput = this.showTabs === false ? true : false;
           });
         });
       });

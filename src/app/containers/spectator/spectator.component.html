@@ -39,11 +39,11 @@
     </nav>
 
     <div [ngSwitch]="acTab">
-      <app-summoner-detail *ngSwitchCase="0" [summoner]="summoner" [summLeague]="summLeague"></app-summoner-detail>
+      <app-summoner-detail *ngSwitchCase="0" [summoner]="summoner" [summLeague]="summLeague"> </app-summoner-detail>
 
-      <app-match-history *ngSwitchCase="1" [matchesDetail]="matchesDetail"></app-match-history>
+      <app-match-history *ngSwitchCase="1" [matchesDetail]="matchesDetail" [summoner]="summoner"> </app-match-history>
 
-      <app-current-match *ngSwitchCase="2" [spectatorData]="spectatorData"></app-current-match>
+      <app-current-match *ngSwitchCase="2" [spectatorData]="spectatorData"> </app-current-match>
 
       <div *ngSwitchDefault></div>
     </div>
