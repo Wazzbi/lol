@@ -1,10 +1,10 @@
-import { SpectatorData } from "./../../models/spectator-data";
-import { Component, OnInit, Input } from "@angular/core";
+import { SpectatorData } from './../../models/spectator-data';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: "app-current-match",
-  templateUrl: "./current-match.component.html",
-  styleUrls: ["./current-match.component.scss"]
+  selector: 'app-current-match',
+  templateUrl: './current-match.component.html',
+  styleUrls: ['./current-match.component.scss']
 })
 export class CurrentMatchComponent implements OnInit {
   @Input() spectatorData: SpectatorData;
@@ -13,8 +13,7 @@ export class CurrentMatchComponent implements OnInit {
 
   ngOnInit() {}
 
-  /**
-   * {
+  /*   {
     "gameId": 2382755175,
     "gameStartTime": 0,
     "platformId": "EUN1",
@@ -51,6 +50,5 @@ export class CurrentMatchComponent implements OnInit {
             "teamId": 100,
             "spell1Id": 4,
             "summonerId": "4zVpPvB7S3oo48rcd6wNCziVBj_7TOabjIJJ87-8KMTRFXs"
-        },
-   */
+        }, */
 }

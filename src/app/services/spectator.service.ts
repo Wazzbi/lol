@@ -1,47 +1,32 @@
-import { SpectatorData } from "./../models/spectator-data";
-import { SummonerLeague } from "./../models/summoner-league";
-import { Observable } from "rxjs";
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Summoner } from "../models/summoner";
-import { Match } from "./../models/match";
+import { SpectatorData } from './../models/spectator-data';
+import { SummonerLeague } from './../models/summoner-league';
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Summoner } from '../models/summoner';
+import { Match } from './../models/match';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class SpectatorService {
   constructor(private httpClient: HttpClient) {}
 
-  SUMMONER_URL = "http://localhost/riotApi/lol/api/summoner.php";
-  MATCH_URL = "http://localhost/riotApi/lol/api/match-history.php";
-  SUMM_LEAGUE_URL = "http://localhost/riotApi/lol/api/summoner-league.php";
-  SPECTATOR_URL = "http://localhost/riotApi/lol/api/spectator.php";
+  RIOT_URL = 'http://localhost/riotApi/lol/api/riotApi.php';
 
   getSummonerData(name: string, region: string): Observable<Summoner> {
-    return this.httpClient.post<Summoner>(
-      this.SUMMONER_URL,
-      `name=${name}&region=${region}`
-    );
+    return this.httpClient.post<Summoner>(this.RIOT_URL, `name=${name}&region=${region}&action=getSummonerData`);
   }
 
   getSummonerLeague(id: string, region: string): Observable<SummonerLeague> {
-    return this.httpClient.post<SummonerLeague>(
-      this.SUMM_LEAGUE_URL,
-      `id=${id}&region=${region}`
-    );
+    return this.httpClient.post<SummonerLeague>(this.RIOT_URL, `id=${id}&region=${region}&action=getSummonerLeague`);
   }
 
   getMatchHistory(accID: string, region: string): Observable<Match[]> {
-    return this.httpClient.post<Match[]>(
-      this.MATCH_URL,
-      `accID=${accID}&region=${region}`
-    );
+    return this.httpClient.post<Match[]>(this.RIOT_URL, `accID=${accID}&region=${region}&action=getMatchHistory`);
   }
 
-  getSpectatrData(id: string, region: string): Observable<SpectatorData> {
-    return this.httpClient.post<SpectatorData>(
-      this.SPECTATOR_URL,
-      `id=${id}&region=${region}`
-    );
+  getSpectatorData(id: string, region: string): Observable<SpectatorData> {
+    return this.httpClient.post<SpectatorData>(this.RIOT_URL, `id=${id}&region=${region}&action=getSpectatrData`);
   }
 }
