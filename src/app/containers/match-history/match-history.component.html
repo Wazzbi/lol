@@ -2,6 +2,7 @@
   <div *ngFor="let match of summGames">
     <div>
       {{ match.gameType }}
+      <img [src]="match.icon_url" alt="champ icon" />
     </div>
   </div>
 </div>

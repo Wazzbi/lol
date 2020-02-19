@@ -1,3 +1,4 @@
+import { ChampList } from './../models/champ-list';
 import { MatchDetail } from './../models/match-detail';
 import { SpectatorData } from './../models/spectator-data';
 import { SummonerLeague } from './../models/summoner-league';
@@ -31,7 +32,12 @@ export class SpectatorService {
   getSpectatorData(id: string, region: string): Observable<SpectatorData> {
     return this.httpClient.post<SpectatorData>(this.RIOT_URL, `id=${id}&region=${region}&action=getSpectatrData`);
   }
+
   getMatchDetail(gameId: number, region: string): Observable<MatchDetail> {
     return this.httpClient.post<MatchDetail>(this.RIOT_URL, `gameId=${gameId}&region=${region}&action=getMatchDetail`);
+  }
+
+  getChampsData(): Observable<ChampList> {
+    return this.httpClient.get<ChampList>('http://ddragon.leagueoflegends.com/cdn/10.3.1/data/en_US/champion.json');
   }
 }

@@ -1,3 +1,4 @@
+import { ChampList } from './../../models/champ-list';
 import { MatchDetail } from './../../models/match-detail';
 import { SpectatorData } from './../../models/spectator-data';
 import { SummonerLeague } from './../../models/summoner-league';
@@ -18,6 +19,7 @@ export class SpectatorComponent implements OnInit {
   summLeague: SummonerLeague = null;
   spectatorData: SpectatorData;
   matchesDetail: MatchDetail[] = [];
+  champList: ChampList;
 
   // settery
   name = '';
@@ -63,9 +65,7 @@ export class SpectatorComponent implements OnInit {
 
   constructor(private specService: SpectatorService) {}
 
-  ngOnInit() {
-    // TODO: stahovat data o champech jinak nejde spárovat championId s jpg (potřebuji jméno)
-  }
+  ngOnInit() {}
 
   public getSummoner(): void {
     this.matchesDetail = [];
@@ -98,11 +98,13 @@ export class SpectatorComponent implements OnInit {
             // riot policy kvůli rate limitu (100 per 2 min) redukce na 10
             const matches = this.matchHistory.matches;
             let index = 0;
-            for (; index < 10; index++) {
+            for (; index < 1; index++) {
+              // PODMÍNKA ZDE....
               this.specService.getMatchDetail(matches[index].gameId, this.selectedRegion).subscribe(matchDetail => {
                 this.matchesDetail.push(matchDetail);
 
-                if (this.matchesDetail.length === 10) {
+                if (this.matchesDetail.length === 1) {
+                  // ... MÁ DOPAD TADY
                   console.log('matches detail: ', this.matchesDetail);
 
                   this.isLoading = false;
