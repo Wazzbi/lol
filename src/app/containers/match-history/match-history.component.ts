@@ -1,3 +1,4 @@
+import { SummonerSpell, SummonerSpells } from './../../models/summoner-spells';
 import { ChampList, Champion } from './../../models/champ-list';
 import { SpectatorService } from './../../services/spectator.service';
 import { MatchDetail, ParticipantIdentity, Participant } from './../../models/match-detail';
@@ -12,6 +13,7 @@ export class GameData {
   summMetaData: ParticipantIdentity;
   summGameData: Participant;
   icon_url: string;
+  summSpells: string[];
 }
 
 @Component({
@@ -23,8 +25,9 @@ export class MatchHistoryComponent implements OnInit {
   @Input() matchesDetail: MatchDetail[];
   @Input() summoner: Summoner;
 
-  summGames: Array<any> = []; // TODO:interface gameData
+  summGames: Array<GameData> = []; // TODO:interface gameData
   champList: ChampList;
+  spellsList: SummonerSpells;
 
   constructor(private specService: SpectatorService) {}
 
@@ -32,8 +35,13 @@ export class MatchHistoryComponent implements OnInit {
     //nahrát champ meta data ( přiřadit jméno champa k jeho id)
     this.specService.getChampsData().subscribe(res => {
       this.champList = res;
-      console.log('champs recieved: ', this.champList.data);
+      console.log('champs recieved: ', this.champList);
       this.sortData(this.matchesDetail);
+
+      this.specService.getSpellsData().subscribe(res => {
+        this.spellsList = res;
+        console.log('spells recieved: ', this.spellsList);
+      });
     });
   }
 
@@ -52,8 +60,7 @@ export class MatchHistoryComponent implements OnInit {
       gameD.summMetaData = summMetaData;
       gameD.summGameData = summGameData;
       gameD.icon_url = this.champIcon_URL(summGameData);
-
-      this.summGames.push(gameD);
+      gameD.summSpells = this.summGames.push(gameD);
     }
     console.log('summGames: ', this.summGames);
   }
@@ -71,4 +78,25 @@ export class MatchHistoryComponent implements OnInit {
     });
     return `http://ddragon.leagueoflegends.com/cdn/10.3.1/img/champion/${champName}.png`;
   }
+
+  // let spaghetti rolls again :-P
+  /**
+   * summSpell_URL(summGameData: Participant): string[] {
+    let summSpells: number[] = [summGameData.spell1Id, summGameData.spell2Id];
+    let spellData = this.spellsList.data;
+    let spellNames: string[] = [];
+
+    for (const spell of summSpells) {
+
+      Object.keys(spellData).find(spell => {
+        if (spellData[spell].key == summSpells[spell].) {
+          champName = spellData[champ].name;
+        }
+      });
+      
+    }
+    
+    return `http://ddragon.leagueoflegends.com/cdn/10.3.1/img/champion/${champName}.png`;
+  }
+   */
 }

@@ -1,8 +1,14 @@
 <div class="history" *ngIf="matchesDetail[0].gameId; else error">
   <div *ngFor="let match of summGames">
-    <div>
-      {{ match.gameType }}
-      <img [src]="match.icon_url" alt="champ icon" />
+    <div class="match-card">
+      <div class="icon">
+        <img [src]="match.icon_url" alt="champ icon" />
+      </div>
+      <div class="data1">
+        {{ match.gameType }}
+        <br />
+        {{ match.summGameData.stats.win }}
+      </div>
     </div>
   </div>
 </div>

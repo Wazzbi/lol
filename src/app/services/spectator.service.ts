@@ -1,3 +1,4 @@
+import { SummonerSpells } from './../models/summoner-spells';
 import { ChampList } from './../models/champ-list';
 import { MatchDetail } from './../models/match-detail';
 import { SpectatorData } from './../models/spectator-data';
@@ -39,5 +40,11 @@ export class SpectatorService {
 
   getChampsData(): Observable<ChampList> {
     return this.httpClient.get<ChampList>('http://ddragon.leagueoflegends.com/cdn/10.3.1/data/en_US/champion.json');
+  }
+
+  getSpellsData(): Observable<SummonerSpells> {
+    return this.httpClient.get<SummonerSpells>(
+      'http://ddragon.leagueoflegends.com/cdn/10.3.1/data/en_US/summoner.json'
+    );
   }
 }

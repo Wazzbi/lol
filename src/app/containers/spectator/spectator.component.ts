@@ -98,12 +98,12 @@ export class SpectatorComponent implements OnInit {
             // riot policy kvůli rate limitu (100 per 2 min) redukce na 10
             const matches = this.matchHistory.matches;
             let index = 0;
-            for (; index < 1; index++) {
+            for (; index < 5; index++) {
               // PODMÍNKA ZDE....
               this.specService.getMatchDetail(matches[index].gameId, this.selectedRegion).subscribe(matchDetail => {
                 this.matchesDetail.push(matchDetail);
 
-                if (this.matchesDetail.length === 1) {
+                if (this.matchesDetail.length === 5) {
                   // ... MÁ DOPAD TADY
                   console.log('matches detail: ', this.matchesDetail);
 

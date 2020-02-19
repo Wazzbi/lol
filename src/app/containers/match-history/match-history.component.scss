@@ -2,3 +2,24 @@
   height: 680px;
   overflow-y: auto;
 }
+.match-card {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 10px;
+
+  .icon {
+    display: inline-block;
+  }
+
+  .data1 {
+    display: inline-block;
+    padding-left: 10px;
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+}
