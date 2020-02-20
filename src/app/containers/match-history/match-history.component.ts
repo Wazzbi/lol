@@ -14,6 +14,7 @@ export class GameData {
   summGameData: Participant;
   icon_url: string;
   summSpells: string[];
+  items: string[];
 }
 
 @Component({
@@ -62,7 +63,8 @@ export class MatchHistoryComponent implements OnInit {
       gameD.summMetaData = summMetaData;
       gameD.summGameData = summGameData;
       gameD.icon_url = this.champIcon_url(summGameData);
-      gameD.summSpells = this.summSpell_URL(summGameData);
+      gameD.summSpells = this.summSpell_url(summGameData);
+      gameD.items = this.itemIcons_url(summGameData);
       this.summGames.push(gameD);
     }
     console.log('summGames: ', this.summGames);
@@ -83,7 +85,7 @@ export class MatchHistoryComponent implements OnInit {
   }
 
   // let spaghetti rolls again :-P
-  summSpell_URL(summGameData: Participant): string[] {
+  summSpell_url(summGameData: Participant): string[] {
     let summSpells: number[] = [summGameData.spell1Id, summGameData.spell2Id];
     let spellData = this.spellsList.data;
     let spellNames: string[] = [];
@@ -98,4 +100,19 @@ export class MatchHistoryComponent implements OnInit {
     }
     return spellNames;
   }
+
+  // icony itemů TODO: hover info itemu
+  // adept na přesun do servisy
+  itemIcons_url(summGameData: Participant): string[] {
+    let itemIcons: string[] = [];
+    for (let index = 0; index < 6; index++) {
+      let item = `item${index}`;
+      let itemId = summGameData.stats[item];
+      itemIcons.push(`http://ddragon.leagueoflegends.com/cdn/10.4.1/img/item/${itemId}.png`);
+    }
+    return itemIcons;
+  }
+
+  // TODO: popis k hover na itemy
+  //http://ddragon.leagueoflegends.com/cdn/10.4.1/data/en_US/item.json
 }

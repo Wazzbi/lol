@@ -4,13 +4,25 @@
       <div class="icon">
         <img [src]="match.icon_url" alt="champ icon" />
       </div>
+
       <div class="data1">
-        {{ match.gameType | matchType }}
+        <span>{{ match.gameType | matchType }}</span>
         <br />
-        {{ match.summGameData.stats.win | matchResult }}
+        <span [ngStyle]="{ color: match.summGameData.stats.win ? 'green' : 'red' }">{{
+          match.summGameData.stats.win | matchResult
+        }}</span>
         <br />
         <img [src]="match.summSpells[0]" alt="summoner spell 1" />
         <img [src]="match.summSpells[1]" alt="summoner spell 2" />
+      </div>
+
+      <div class="items">
+        <div class="box"><img [src]="match.items[0]" alt="" /></div>
+        <div class="box"><img [src]="match.items[1]" alt="" /></div>
+        <div class="box"><img [src]="match.items[2]" alt="" /></div>
+        <div class="box"><img [src]="match.items[3]" alt="" /></div>
+        <div class="box"><img [src]="match.items[4]" alt="" /></div>
+        <div class="box"><img [src]="match.items[5]" alt="" /></div>
       </div>
     </div>
   </div>
