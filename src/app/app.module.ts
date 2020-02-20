@@ -1,3 +1,5 @@
+import { MatchResult } from './pipes/match-result';
+import { MatchType } from './pipes/match-type';
 import { LeagueDetailComponent } from './components/league-detail/league-detail.component';
 import { LoadingComponent } from './containers/loading/loading.component';
 import { MatchHistoryComponent } from './containers/match-history/match-history.component';
@@ -14,7 +16,6 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
 
 import {
   MatInputModule,
@@ -34,7 +35,9 @@ import {
     SummonerDetailComponent,
     MatchHistoryComponent,
     LoadingComponent,
-    LeagueDetailComponent
+    LeagueDetailComponent,
+    MatchType,
+    MatchResult
   ],
   imports: [
     BrowserModule,

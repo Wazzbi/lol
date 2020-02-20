@@ -5,9 +5,12 @@
         <img [src]="match.icon_url" alt="champ icon" />
       </div>
       <div class="data1">
-        {{ match.gameType }}
+        {{ match.gameType | matchType }}
         <br />
-        {{ match.summGameData.stats.win }}
+        {{ match.summGameData.stats.win | matchResult }}
+        <br />
+        <img [src]="match.summSpells[0]" alt="summoner spell 1" />
+        <img [src]="match.summSpells[1]" alt="summoner spell 2" />
       </div>
     </div>
   </div>

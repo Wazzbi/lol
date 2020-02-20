@@ -7,19 +7,26 @@
   flex-wrap: nowrap;
   align-items: center;
   padding: 10px;
+  border-bottom: 1px solid rgb(221, 221, 221);
 
   .icon {
     display: inline-block;
+
+    img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
   }
 
   .data1 {
     display: inline-block;
     padding-left: 10px;
-  }
 
-  img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    img {
+      width: 25px;
+      height: 25px;
+      //border-radius: 50%;
+    }
   }
 }
