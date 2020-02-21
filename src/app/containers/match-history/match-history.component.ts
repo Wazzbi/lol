@@ -29,6 +29,7 @@ export class MatchHistoryComponent implements OnInit {
   summGames: Array<GameData> = []; // TODO:interface gameData
   champList: ChampList;
   spellsList: SummonerSpells;
+  itemList: ItemList;
 
   constructor(private specService: SpectatorService) {}
 
@@ -42,7 +43,12 @@ export class MatchHistoryComponent implements OnInit {
         this.spellsList = res;
         console.log('spells recieved: ', this.spellsList);
 
-        this.sortData(this.matchesDetail);
+        this.specService.getItemsData().subscribe(res => {
+          this.itemList = res;
+          console.log('items recieved: ', this.itemList);
+
+          this.sortData(this.matchesDetail);
+        });
       });
     });
   }

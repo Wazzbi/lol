@@ -47,4 +47,8 @@ export class SpectatorService {
       'http://ddragon.leagueoflegends.com/cdn/10.3.1/data/en_US/summoner.json'
     );
   }
+
+  getItemsData(): Observable<ItemList> {
+    return this.httpClient.get<ItemList>('http://ddragon.leagueoflegends.com/cdn/10.4.1/data/en_US/item.json');
+  }
 }
