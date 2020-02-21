@@ -5,6 +5,7 @@ import { MatchDetail, ParticipantIdentity, Participant } from './../../models/ma
 import { Component, OnInit, Input } from '@angular/core';
 import { MatchHistory } from '../../models/matchHistory';
 import { Summoner } from 'src/app/models/summoner';
+import { Item, ItemList } from 'src/app/models/item-list';
 
 // někam uklidit do modelů pokud bude potřeba i jinde
 export class GameData {
@@ -15,6 +16,7 @@ export class GameData {
   icon_url: string;
   summSpells: string[];
   items: string[];
+  itemsData: Item[];
 }
 
 @Component({
@@ -71,6 +73,8 @@ export class MatchHistoryComponent implements OnInit {
       gameD.icon_url = this.champIcon_url(summGameData);
       gameD.summSpells = this.summSpell_url(summGameData);
       gameD.items = this.itemIcons_url(summGameData);
+      gameD.itemsData = this.itemDescriptions(summGameData);
+
       this.summGames.push(gameD);
     }
     console.log('summGames: ', this.summGames);
@@ -119,6 +123,25 @@ export class MatchHistoryComponent implements OnInit {
     return itemIcons;
   }
 
-  // TODO: popis k hover na itemy
-  //http://ddragon.leagueoflegends.com/cdn/10.4.1/data/en_US/item.json
+  itemDescriptions(summGameData: Participant): Item[] {
+    let summItems: number[] = [
+      summGameData.stats.item0,
+      summGameData.stats.item1,
+      summGameData.stats.item3,
+      summGameData.stats.item4,
+      summGameData.stats.item5,
+      summGameData.stats.item6
+    ];
+    let itemData = this.itemList.data;
+    let items: Item[] = [];
+
+    for (const item in summItems) {
+      Object.keys(itemData).find(res => {
+        if (+res == summItems[item]) {
+          items.push(itemData[res]);
+        }
+      });
+    }
+    return items;
+  }
 }

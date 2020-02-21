@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { Summoner } from '../models/summoner';
 import { Match } from './../models/match';
 import { MatchHistory } from '../models/matchHistory';
+import { ItemList } from '../models/item-list';
 
 @Injectable({
   providedIn: 'root'
