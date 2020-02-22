@@ -138,11 +138,17 @@ export class MatchHistoryComponent implements OnInit {
     let dummy: Item = {};
 
     for (const item in summItems) {
-      Object.keys(itemData).find(res => {
-        if (+res == summItems[item]) {
-          items.push(itemData[res]);
-        }
-      });
+      // když item není (summGameData.stats.itemX === 0)
+      if (summItems[item] === 0) {
+        items.push(dummy);
+      } else {
+        // jinak najít
+        Object.keys(itemData).find(res => {
+          if (+res == summItems[item]) {
+            items.push(itemData[res]);
+          }
+        });
+      }
     }
     return items;
   }
