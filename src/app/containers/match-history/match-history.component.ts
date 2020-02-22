@@ -28,7 +28,7 @@ export class MatchHistoryComponent implements OnInit {
   @Input() matchesDetail: MatchDetail[];
   @Input() summoner: Summoner;
 
-  summGames: Array<GameData> = []; // TODO:interface gameData
+  summGames: Array<GameData> = [];
   champList: ChampList;
   spellsList: SummonerSpells;
   itemList: ItemList;
@@ -115,7 +115,7 @@ export class MatchHistoryComponent implements OnInit {
   // adept na přesun do servisy
   itemIcons_url(summGameData: Participant): string[] {
     let itemIcons: string[] = [];
-    for (let index = 0; index < 6; index++) {
+    for (let index = 0; index < 7; index++) {
       let item = `item${index}`;
       let itemId = summGameData.stats[item];
       itemIcons.push(`http://ddragon.leagueoflegends.com/cdn/10.4.1/img/item/${itemId}.png`);
@@ -127,6 +127,7 @@ export class MatchHistoryComponent implements OnInit {
     let summItems: number[] = [
       summGameData.stats.item0,
       summGameData.stats.item1,
+      summGameData.stats.item2,
       summGameData.stats.item3,
       summGameData.stats.item4,
       summGameData.stats.item5,
@@ -134,6 +135,7 @@ export class MatchHistoryComponent implements OnInit {
     ];
     let itemData = this.itemList.data;
     let items: Item[] = [];
+    let dummy: Item = {};
 
     for (const item in summItems) {
       Object.keys(itemData).find(res => {

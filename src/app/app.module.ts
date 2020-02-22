@@ -1,3 +1,4 @@
+import { ItemDetailComponent } from './components/item-detail/item-detail.component';
 import { MatchResult } from './pipes/match-result';
 import { MatchType } from './pipes/match-type';
 import { LeagueDetailComponent } from './components/league-detail/league-detail.component';
@@ -37,7 +38,8 @@ import {
     LoadingComponent,
     LeagueDetailComponent,
     MatchType,
-    MatchResult
+    MatchResult,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,

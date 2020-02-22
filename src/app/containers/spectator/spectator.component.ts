@@ -102,7 +102,7 @@ export class SpectatorComponent implements OnInit {
               // PODMÍNKA ZDE....
               this.specService.getMatchDetail(matches[index].gameId, this.selectedRegion).subscribe(matchDetail => {
                 this.matchesDetail.push(matchDetail);
-                this.matchesDetail.sort((a, b) => b.gameId - a.gameId);
+                this.matchesDetail.sort((a, b) => b.gameCreation - a.gameCreation);
 
                 if (this.matchesDetail.length === 5) {
                   // ... MÁ DOPAD TADY
