@@ -80,11 +80,17 @@ export class SpectatorComponent implements OnInit {
       this.summoner = summoner;
       console.log('summoner: ', this.summoner);
 
+      if (this.summoner.id === undefined) {
+        this.isLoading = false;
+        this.wrongInput = true;
+      }
+
       // získat data o hráčově lize
       this.specService.getSummonerLeague(this.summoner.id, this.selectedRegion).subscribe(league => {
         this.summLeague = league;
         console.log('summoner league: ', this.summLeague);
 
+        // TODO: filtr na classic/ranked hry ostatní zahodit
         // získat data o posledních hrách
         this.specService.getMatchHistory(this.summoner.accountId, this.selectedRegion).subscribe(history => {
           this.matchHistory = history;

@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SpectatorComponent } from './containers/spectator/spectator.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { GameDuration } from './pipes/game-duration';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -39,7 +40,8 @@ import {
     LeagueDetailComponent,
     MatchType,
     MatchResult,
-    ItemDetailComponent
+    ItemDetailComponent,
+    GameDuration
   ],
   imports: [
     BrowserModule,

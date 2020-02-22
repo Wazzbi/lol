@@ -9,14 +9,19 @@ import { Item, ItemList } from 'src/app/models/item-list';
 
 // někam uklidit do modelů pokud bude potřeba i jinde
 export class GameData {
+  gameCreation: number;
+  gameDuration: number;
   gameType: string;
   gameMode: string;
   summMetaData: ParticipantIdentity;
   summGameData: Participant;
+  champName: string;
   icon_url: string;
+  spellNames: string[];
   summSpells: string[];
   items: string[];
   itemsData: Item[];
+  lane_url: string;
 }
 
 @Component({
@@ -66,21 +71,26 @@ export class MatchHistoryComponent implements OnInit {
 
       // TODO: toto by šlo určitě taky nějak inteligentně..
       let gameD: GameData = new GameData();
+
+      gameD.gameCreation = match.gameCreation;
+      gameD.gameDuration = match.gameDuration;
       gameD.gameType = match.gameType;
       gameD.gameMode = match.gameMode;
       gameD.summMetaData = summMetaData;
       gameD.summGameData = summGameData;
+      gameD.champName = this.champName(summGameData);
       gameD.icon_url = this.champIcon_url(summGameData);
+      gameD.spellNames = this.summSpellNames(summGameData);
       gameD.summSpells = this.summSpell_url(summGameData);
       gameD.items = this.itemIcons_url(summGameData);
       gameD.itemsData = this.itemDescriptions(summGameData);
+      gameD.lane_url = this.laneIcon_url(summGameData);
 
       this.summGames.push(gameD);
     }
     console.log('summGames: ', this.summGames);
   }
 
-  // let spaghetti rolls :-P
   champIcon_url(summGameData: Participant): string {
     let champId = summGameData.championId;
     let champData = this.champList.data;
@@ -94,7 +104,20 @@ export class MatchHistoryComponent implements OnInit {
     return `http://ddragon.leagueoflegends.com/cdn/10.3.1/img/champion/${champName}.png`;
   }
 
-  // let spaghetti rolls again :-P
+  // TODO: spojit s champIcon_url
+  champName(summGameData: Participant): string {
+    let champId = summGameData.championId;
+    let champData = this.champList.data;
+    let champName = '';
+
+    Object.keys(champData).find(champ => {
+      if (champData[champ].key == champId) {
+        champName = champData[champ].id;
+      }
+    });
+    return champName;
+  }
+
   summSpell_url(summGameData: Participant): string[] {
     let summSpells: number[] = [summGameData.spell1Id, summGameData.spell2Id];
     let spellData = this.spellsList.data;
@@ -111,7 +134,26 @@ export class MatchHistoryComponent implements OnInit {
     return spellNames;
   }
 
-  // icony itemů TODO: hover info itemu
+  // TODO: spojit s summSpell_url
+  summSpellNames(summGameData: Participant): string[] {
+    let summSpells: number[] = [summGameData.spell1Id, summGameData.spell2Id];
+    let spellData = this.spellsList.data;
+    let spellNames: string[] = [];
+
+    for (const spell of summSpells) {
+      Object.keys(spellData).find(res => {
+        if (spellData[res].key == summSpells[summSpells.indexOf(spell)]) {
+          let spellN = spellData[res].id;
+          // otypování na string
+          let spellName = String(spellN);
+          // vložit jen název kouzla bez "summoner"
+          spellNames.push(spellName.substring(8));
+        }
+      });
+    }
+    return spellNames;
+  }
+
   // adept na přesun do servisy
   itemIcons_url(summGameData: Participant): string[] {
     let itemIcons: string[] = [];
@@ -151,5 +193,16 @@ export class MatchHistoryComponent implements OnInit {
       }
     }
     return items;
+  }
+
+  laneIcon_url(summGameData: Participant): string {
+    let lane = summGameData.timeline.lane;
+    let role = summGameData.timeline.role;
+
+    if (lane === 'BOTTOM' && role === 'DUO_SUPPORT') {
+      return `../../../assets/ranked-positions/Position_Gold-SUPPORT.png`;
+    }
+
+    return `../../../assets/ranked-positions/Position_Gold-${lane}.png`;
   }
 }
