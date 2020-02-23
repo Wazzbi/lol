@@ -144,11 +144,8 @@ export class MatchHistoryComponent implements OnInit {
     for (const spell of summSpells) {
       Object.keys(spellData).find(res => {
         if (spellData[res].key == summSpells[summSpells.indexOf(spell)]) {
-          let spellN = spellData[res].id;
-          // otypování na string
-          let spellName = String(spellN);
-          // vložit jen název kouzla bez "summoner"
-          spellNames.push(spellName.substring(8));
+          let spellName = spellData[res].name;
+          spellNames.push(spellName);
         }
       });
     }
