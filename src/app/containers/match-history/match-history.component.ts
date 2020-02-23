@@ -41,6 +41,7 @@ export class MatchHistoryComponent implements OnInit {
   constructor(private specService: SpectatorService) {}
 
   ngOnInit() {
+    // TODO: logiku načítání dát někam aby proběhla jen jednou a ne pokaždý, když změmím záložku
     //nahrát champ meta data ( přiřadit jméno champa k jeho id)
     this.specService.getChampsData().subscribe(res => {
       this.champList = res;
@@ -180,17 +181,18 @@ export class MatchHistoryComponent implements OnInit {
     let dummy: Item = {};
 
     for (const item in summItems) {
+      // TODO: chybí podmínka, když není item v seznamu "itemData" (děje se u starých itemů)
       // když item není (summGameData.stats.itemX === 0)
-      if (summItems[item] === 0) {
+      if (summItems[item] === 0 || !itemData.hasOwnProperty(summItems[item])) {
         items.push(dummy);
-      } else {
-        // jinak najít
-        Object.keys(itemData).find(res => {
-          if (+res == summItems[item]) {
-            items.push(itemData[res]);
-          }
-        });
       }
+
+      // jinak najít
+      Object.keys(itemData).find(res => {
+        if (+res == summItems[item]) {
+          items.push(itemData[res]);
+        }
+      });
     }
     return items;
   }
@@ -201,6 +203,12 @@ export class MatchHistoryComponent implements OnInit {
 
     if (lane === 'BOTTOM' && role === 'DUO_SUPPORT') {
       return `../../../assets/ranked-positions/Position_Gold-SUPPORT.png`;
+    }
+    if (lane === 'NONE' && role === 'DUO_SUPPORT') {
+      return `../../../assets/ranked-positions/Position_Gold-SUPPORT.png`;
+    }
+    if (lane === 'NONE' && role === 'DUO') {
+      return `../../../assets/ranked-positions/Position_Gold-BOTTOM.png`;
     }
 
     return `../../../assets/ranked-positions/Position_Gold-${lane}.png`;

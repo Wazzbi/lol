@@ -90,7 +90,6 @@ export class SpectatorComponent implements OnInit {
         this.summLeague = league;
         console.log('summoner league: ', this.summLeague);
 
-        // TODO: filtr na classic/ranked hry ostatní zahodit
         // získat data o posledních hrách
         this.specService.getMatchHistory(this.summoner.accountId, this.selectedRegion).subscribe(history => {
           this.matchHistory = history;
@@ -103,15 +102,19 @@ export class SpectatorComponent implements OnInit {
 
             // riot policy kvůli rate limitu (100 per 2 min) redukce na 10
             const matches = this.matchHistory.matches;
-            let index = 0;
-            for (; index < 5; index++) {
-              // PODMÍNKA ZDE....
+            // PODMÍNKA ZDE....
+            for (let index = 0; index < 20; index++) {
               this.specService.getMatchDetail(matches[index].gameId, this.selectedRegion).subscribe(matchDetail => {
                 this.matchesDetail.push(matchDetail);
-                this.matchesDetail.sort((a, b) => b.gameCreation - a.gameCreation);
 
-                if (this.matchesDetail.length === 5) {
-                  // ... MÁ DOPAD TADY
+                // ... MÁ DOPAD TADY
+                if (this.matchesDetail.length === 20) {
+                  let games = this.matchesDetail;
+                  // sotrovat data od nejmladší hry
+                  games.sort((a, b) => b.gameCreation - a.gameCreation);
+                  // jen classic hry
+                  this.matchesDetail = games.filter(match => match.gameMode === 'CLASSIC');
+
                   console.log('matches detail: ', this.matchesDetail);
 
                   this.isLoading = false;

@@ -10,7 +10,7 @@
       <div class="data1">
         <span>{{ match.gameType | matchType }}</span>
         <br />
-        <span [ngStyle]="{ color: match.summGameData.stats.win ? 'green' : 'red' }"
+        <span [ngStyle]="{ color: match.summGameData.stats.win ? 'blue' : 'red' }"
           ><b>{{ match.summGameData.stats.win | matchResult }}</b></span
         >
       </div>
@@ -77,6 +77,10 @@
             <td class="value">
               <b>{{ match.gameCreation | date: 'd/M/yy' }}</b>
             </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
           </tr>
         </table>
       </div>
