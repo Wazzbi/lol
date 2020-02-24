@@ -9,6 +9,7 @@ import { MatchHistory } from 'src/app/models/matchHistory';
 import { Item, ItemList } from 'src/app/models/item-list';
 import { SummonerSpells } from 'src/app/models/summoner-spells';
 
+// data pro match history TODO: někam do modelu
 export class GameData {
   gameCreation: number;
   gameDuration: number;
