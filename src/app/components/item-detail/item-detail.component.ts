@@ -1,4 +1,3 @@
-import { GameData } from './../../containers/match-history/match-history.component';
 import { Component, OnInit, Input } from '@angular/core';
 import { Item } from 'src/app/models/item-list';
 
