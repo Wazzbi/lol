@@ -1,12 +1,16 @@
-<div>
+<div class="container">
   <div *ngIf="summoner.name; else showThis">
-    <h1>{{ summoner.name }}</h1>
-    <img class="profileIcon" [src]="icon_URL" alt="profile icon" />
+    <div class="headline">
+      <img class="profileIcon" [src]="icon_URL" alt="profile icon" />
+      <span class="name"
+        ><b>{{ summoner.name }}</b></span
+      >
+    </div>
+    <app-league-detail [summLeague]="summLeague" [summGames]="summGames"></app-league-detail>
+    <img class="emblem" [src]="rankedEmblem" />
   </div>
 
   <ng-template #showThis>
     Summoner Not Found
   </ng-template>
-
-  <app-league-detail [summLeague]="summLeague" [summGames]="summGames"></app-league-detail>
 </div>

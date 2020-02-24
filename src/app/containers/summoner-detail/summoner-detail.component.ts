@@ -14,11 +14,13 @@ export class SummonerDetailComponent implements OnInit {
   @Input() summGames: GameData[];
 
   icon_URL: string;
+  rankedEmblem: string;
 
   constructor() {}
 
   ngOnInit() {
     this.icon_URL = `http://ddragon.leagueoflegends.com/cdn/10.3.1/img/profileicon/${this.summoner.profileIconId}.png`;
+    this.rankedEmblem = `../../../assets/ranked-emblems/Emblem_${this.summLeague[0].tier}.png`;
   }
 
   /*  ngOnChanges(changes: SimpleChanges): void {

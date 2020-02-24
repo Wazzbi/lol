@@ -1,20 +1,37 @@
 <div>
-  <div *ngIf="summLeague[0]; else showThis">
-    <span>Tier: {{ summLeague[0].tier }}</span>
-    <br />
-    <span>Rank: {{ summLeague[0].rank }}</span>
-    <br />
-    <span>LP: {{ summLeague[0].leaguePoints }}</span>
-    <br />
-    <span>Wins: {{ summLeague[0].wins }}</span>
-    <br />
-    <span>Losses: {{ summLeague[0].losses }}</span>
-    <br />
-
-    <span *ngIf="summLeague[0].veteran">Veteran</span>
-    <span *ngIf="summLeague[0].freshBlood">Fresh Blood</span>
-    <span *ngIf="summLeague[0].hotStreak">Hot Streak</span>
-    <span *ngIf="summLeague[0].inactive">Inactive</span>
+  <div class="table" *ngIf="summLeague[0]; else showThis">
+    <table>
+      <tr>
+        <td class="type">Tier:</td>
+        <td class="value">
+          <b>{{ summLeague[0].tier }}</b>
+        </td>
+      </tr>
+      <tr>
+        <td class="type">Rank:</td>
+        <td class="value">
+          <b>{{ summLeague[0].rank }}</b>
+        </td>
+      </tr>
+      <tr>
+        <td class="type">LP:</td>
+        <td class="value">
+          <b>{{ summLeague[0].leaguePoints }}</b>
+        </td>
+      </tr>
+      <tr>
+        <td class="type">Wins:</td>
+        <td class="value">
+          <b>{{ summLeague[0].wins }}</b>
+        </td>
+      </tr>
+      <tr>
+        <td class="type">Losses:</td>
+        <td class="value">
+          <b>{{ summLeague[0].losses }}</b>
+        </td>
+      </tr>
+    </table>
   </div>
   <div>
     <span *ngIf="summGames">summGames[0]: {{ summGames[0].gameMode }}</span>

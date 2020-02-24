@@ -1,5 +1,36 @@
+.container {
+  position: relative;
+}
+
+.headline {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  display: table;
+}
+
 .profileIcon {
-  width: 100px;
-  height: 100px;
+  display: table-cell;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
+  vertical-align: middle;
+  //padding-left: 20px;
+}
+
+.name {
+  display: table-cell;
+  //width: 45px;
+  height: 60px;
+  font-size: xx-large;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+
+.emblem {
+  position: absolute;
+  z-index: -100;
+  left: 200px;
+  top: 200px;
+  width: 10vw;
+  height: auto;
 }
