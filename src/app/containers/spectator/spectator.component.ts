@@ -132,12 +132,6 @@ export class SpectatorComponent implements OnInit {
 
                   console.log('matches detail: ', this.matchesDetail);
 
-                  this.isLoading = false;
-                  // ukázat taby
-                  this.showTabs = this.summoner.id !== undefined ? true : false;
-                  // ukázat pozn, že summoner nebyl nalezen
-                  this.wrongInput = this.showTabs === false ? true : false;
-
                   ////////////////////////
                   // MATCH HISTORY DATA //
                   ////////////////////////
@@ -156,6 +150,13 @@ export class SpectatorComponent implements OnInit {
                         console.log('items recieved: ', this.itemList);
 
                         this.sortData(this.matchesDetail);
+
+                        // TENTO BLOK VŽDY NAKONEC
+                        this.isLoading = false;
+                        // ukázat taby
+                        this.showTabs = this.summoner.id !== undefined ? true : false;
+                        // ukázat pozn, že summoner nebyl nalezen
+                        this.wrongInput = this.showTabs === false ? true : false;
                       });
                     });
                   });

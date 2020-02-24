@@ -16,6 +16,9 @@
     <span *ngIf="summLeague[0].hotStreak">Hot Streak</span>
     <span *ngIf="summLeague[0].inactive">Inactive</span>
   </div>
+  <div>
+    <span *ngIf="summGames">summGames[0]: {{ summGames[0].gameMode }}</span>
+  </div>
   <ng-template #showThis>
     League Data Not Found
   </ng-template>

@@ -8,14 +8,14 @@ import { GameData } from '../spectator/spectator.component';
   styleUrls: ['./match-history.component.scss']
 })
 export class MatchHistoryComponent implements OnInit, OnChanges {
-  @Input() summGamesData: GameData[];
-  summGames: GameData[];
+  @Input() summGames: GameData[];
+  //summGames: GameData[];
 
   constructor() {}
 
   ngOnInit() {}
 
   ngOnChanges() {
-    this.summGames = this.summGamesData;
+    //this.summGames = this.summGamesData;
   }
 }
