@@ -1,28 +1,26 @@
 .container {
-  position: relative;
+  //position: relative;
+  //margin: 0 auto;
+  //display: block;
+  //text-align: center;
 }
 
 .headline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 50px;
-  margin-bottom: 20px;
-  display: table;
+  margin-bottom: 50px;
 }
 
 .profileIcon {
-  display: table-cell;
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  vertical-align: middle;
-  //padding-left: 20px;
 }
 
 .name {
-  display: table-cell;
-  //width: 45px;
-  height: 60px;
   font-size: xx-large;
-  vertical-align: middle;
   padding-left: 10px;
 }
 

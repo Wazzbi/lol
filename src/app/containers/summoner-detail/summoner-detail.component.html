@@ -1,13 +1,20 @@
 <div class="container">
   <div *ngIf="summoner.name; else showThis">
     <div class="headline">
-      <img class="profileIcon" [src]="icon_URL" alt="profile icon" />
+      <img class="profileIcon" [src]="ICON_URL" alt="profile icon" />
       <span class="name"
         ><b>{{ summoner.name }}</b></span
       >
     </div>
-    <app-league-detail [summLeague]="summLeague" [summGames]="summGames"></app-league-detail>
-    <img class="emblem" [src]="rankedEmblem" />
+    <app-league-detail
+      [summLeague]="summLeague"
+      [summGames]="summGames"
+      [matchHistory]="matchHistory"
+    ></app-league-detail>
+
+    <!-- dokud nebudu vědět co s tím logem
+      <img class="emblem" [src]="rankedEmblem" />
+    -->
   </div>
 
   <ng-template #showThis>
