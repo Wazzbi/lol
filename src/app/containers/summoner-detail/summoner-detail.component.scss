@@ -24,11 +24,18 @@
   padding-left: 10px;
 }
 
-.emblem {
-  position: absolute;
-  z-index: -100;
-  left: 200px;
-  top: 200px;
-  width: 10vw;
-  height: auto;
+.detail {
+  display: inline-block;
+  //border: 1px solid black;
+}
+.graphs {
+  position: relative;
+  display: block;
+  margin-top: 20px;
+}
+.graph {
+  //display: block;
+  height: 240px;
+  width: 420px;
+  //border: 1px solid black;
 }

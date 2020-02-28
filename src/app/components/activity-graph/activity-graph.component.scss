@@ -1,0 +1,8 @@
+.graph {
+  position: relative;
+  width: 400px;
+  height: 220px;
+  border: 1px solid black;
+  //https://bennettfeely.com/clippy/
+  clip-path: polygon(1% 12%, 99% 12%, 99% 90%, 1% 90%);
+}

@@ -6,15 +6,22 @@
         ><b>{{ summoner.name }}</b></span
       >
     </div>
+
     <app-league-detail
+      class="detail"
       [summLeague]="summLeague"
       [summGames]="summGames"
       [matchHistory]="matchHistory"
     ></app-league-detail>
 
-    <!-- dokud nebudu vědět co s tím logem
-      <img class="emblem" [src]="rankedEmblem" />
-    -->
+    <br />
+
+    <div class="graphs">
+      <div class="graph">
+        <span>Activity</span>
+        <app-activity-graph [summGames]="summGames"></app-activity-graph>
+      </div>
+    </div>
   </div>
 
   <ng-template #showThis>

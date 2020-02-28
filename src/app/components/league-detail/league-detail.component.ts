@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SummonerLeague } from 'src/app/models/summoner-league';
 import { GameData } from 'src/app/containers/spectator/spectator.component';
 import { MatchHistory } from 'src/app/models/matchHistory';
-import * as CanvasJS from 'canvasjs';
 
 @Component({
   selector: 'app-league-detail',

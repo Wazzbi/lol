@@ -1,3 +1,4 @@
+import { ActivityGraphComponent } from './components/activity-graph/activity-graph.component';
 import { ItemDetailComponent } from './components/item-detail/item-detail.component';
 import { MatchResult } from './pipes/match-result';
 import { MatchType } from './pipes/match-type';
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ChartsModule } from 'ng2-charts';
 
 import {
   MatInputModule,
@@ -41,7 +43,8 @@ import {
     MatchType,
     MatchResult,
     ItemDetailComponent,
-    GameDuration
+    GameDuration,
+    ActivityGraphComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import {
     MatButtonToggleModule,
     MatTabsModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ChartsModule
   ],
   providers: [SpectatorService],
   bootstrap: [AppComponent]
