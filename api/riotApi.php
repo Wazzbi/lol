@@ -10,6 +10,12 @@ header("Access-Control-Allow-Origin: *");
 //Requested-With");
 //header("Access-Control-Max-Age: 172800");
 
+if(isset($_POST['image'])){
+    $img = "./{$_POST['image']}.png";
+    header('Content-Type: image/png');
+    readfile($img);
+}
+
 if(isset($_POST))
 {
     error_reporting(0);
@@ -29,46 +35,38 @@ if(isset($_POST))
 
     error_reporting(0);
 
-    //SUMMONER
-    if ($_ACTION == "getSummonerData") {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, "https://".$_REGION.".api.riotgames.com/lol/summoner/v4/summoners/by-name/".$_NAME."?api_key=".$_API_KEY);
-        $content = curl_exec($ch);
-        echo $content;
+    switch ($_ACTION) {
+        //SUMMONER
+        case 'getSummonerData':
+            $_REQUEST = "https://$_REGION.api.riotgames.com/lol/summoner/v4/summoners/by-name/$_NAME?api_key=$_API_KEY";
+            break;
+        //SUMMONER LEAGUE
+        case 'getSummonerLeague':
+            $_REQUEST = "https://$_REGION.api.riotgames.com/lol/league/v4/entries/by-summoner/$_ID?api_key=$_API_KEY";
+            break;
+        //MATCH HISTORY
+        case 'getMatchHistory':
+            $_REQUEST = "https://$_REGION.api.riotgames.com/lol/match/v4/matchlists/by-account/$_ACC_ID?api_key=$_API_KEY";
+            break;
+        //SPECTATOR DATA
+        case 'getSpectatrData':
+            $_REQUEST = "https://$_REGION.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/$_ID?api_key=$_API_KEY";
+            break;
+        //MATCH DETAIL
+        case 'getMatchDetail':
+            $_REQUEST = "https://$_REGION.api.riotgames.com/lol/match/v4/matches/$_GAME_ID?api_key=$_API_KEY";
+            break;
+        
+        default:
+            # code...
+            break;
     }
-    //SUMMONER LEAGUE
-    if ($_ACTION == "getSummonerLeague") {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, "https://".$_REGION.".api.riotgames.com/lol/league/v4/entries/by-summoner/".$_ID."?api_key=".$_API_KEY);
-        $content = curl_exec($ch);
-        echo $content;
-    }
-    //MATCH HISTORY
-    if ($_ACTION == "getMatchHistory") {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, "https://".$_REGION.".api.riotgames.com/lol/match/v4/matchlists/by-account/".$_ACC_ID."?api_key=".$_API_KEY);
-        $content = curl_exec($ch);
-        echo $content;
-    }
-    //SPECTATOR DATA
-    if ($_ACTION == "getSpectatrData") {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, "https://".$_REGION.".api.riotgames.com/lol/spectator/v4/active-games/by-summoner/".$_ID."?api_key=".$_API_KEY);
-        $content = curl_exec($ch);
-        echo $content;
-    }
-    //MATCH DETAIL
-    if ($_ACTION == "getMatchDetail") {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, "https://".$_REGION.".api.riotgames.com/lol/match/v4/matches/".$_GAME_ID."?api_key=".$_API_KEY);
-        $content = curl_exec($ch);
-        echo $content;
-    }
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_URL, $_REQUEST);
+    $content = curl_exec($ch);
+    echo $content;
 }
     
 ?>

@@ -1,3 +1,4 @@
+import { UtilsService } from './services/utils.service';
 import { MatchResult } from './pipes/match-result';
 import { MatchType } from './pipes/match-type';
 import { SpectatorService } from './services/spectator.service';
@@ -45,7 +46,7 @@ import {
     MatProgressSpinnerModule,
     ChartsModule
   ],
-  providers: [SpectatorService],
+  providers: [SpectatorService, UtilsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

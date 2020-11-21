@@ -17,30 +17,36 @@ import { ItemList } from '../models/item-list';
 export class SpectatorService {
   constructor(private httpClient: HttpClient) {}
 
-  RIOT_URL = 'http://localhost/riotApi/lol/api/riotApi.php';
+  private RIOT_URL = 'http://localhost/riotApi/lol/api/riotApi.php';
 
   getSummonerData(name: string, region: string): Observable<Summoner> {
-    return this.httpClient.post<Summoner>(this.RIOT_URL, `name=${name}&region=${region}&action=getSummonerData`);
+    return this.httpClient.post<Summoner>(
+      this.RIOT_URL, `name=${name}&region=${region}&action=getSummonerData`);
   }
 
   getSummonerLeague(id: string, region: string): Observable<SummonerLeague> {
-    return this.httpClient.post<SummonerLeague>(this.RIOT_URL, `id=${id}&region=${region}&action=getSummonerLeague`);
+    return this.httpClient.post<SummonerLeague>(
+      this.RIOT_URL, `id=${id}&region=${region}&action=getSummonerLeague`);
   }
 
   getMatchHistory(accID: string, region: string): Observable<MatchHistory> {
-    return this.httpClient.post<MatchHistory>(this.RIOT_URL, `accID=${accID}&region=${region}&action=getMatchHistory`);
+    return this.httpClient.post<MatchHistory>(
+      this.RIOT_URL, `accID=${accID}&region=${region}&action=getMatchHistory`);
   }
 
   getSpectatorData(id: string, region: string): Observable<SpectatorData> {
-    return this.httpClient.post<SpectatorData>(this.RIOT_URL, `id=${id}&region=${region}&action=getSpectatrData`);
+    return this.httpClient.post<SpectatorData>(
+      this.RIOT_URL, `id=${id}&region=${region}&action=getSpectatrData`);
   }
 
   getMatchDetail(gameId: number, region: string): Observable<MatchDetail> {
-    return this.httpClient.post<MatchDetail>(this.RIOT_URL, `gameId=${gameId}&region=${region}&action=getMatchDetail`);
+    return this.httpClient.post<MatchDetail>(
+      this.RIOT_URL, `gameId=${gameId}&region=${region}&action=getMatchDetail`);
   }
 
   getChampsData(): Observable<ChampList> {
-    return this.httpClient.get<ChampList>('http://ddragon.leagueoflegends.com/cdn/10.3.1/data/en_US/champion.json');
+    return this.httpClient.get<ChampList>(
+      'http://ddragon.leagueoflegends.com/cdn/10.3.1/data/en_US/champion.json');
   }
 
   getSpellsData(): Observable<SummonerSpells> {
@@ -50,6 +56,7 @@ export class SpectatorService {
   }
 
   getItemsData(): Observable<ItemList> {
-    return this.httpClient.get<ItemList>('http://ddragon.leagueoflegends.com/cdn/10.4.1/data/en_US/item.json');
+    return this.httpClient.get<ItemList>(
+      'http://ddragon.leagueoflegends.com/cdn/10.4.1/data/en_US/item.json');
   }
 }
