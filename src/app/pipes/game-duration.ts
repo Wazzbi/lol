@@ -2,6 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'gameDuration' })
 export class GameDuration implements PipeTransform {
+
+  // <b>{{ match.gameDuration | gameDuration }}</b>
+  
   transform(value: number): string {
     const minutes: number = Math.floor(value / 60);
     const seconds: number = value - minutes * 60;

@@ -1,15 +1,7 @@
-import { ActivityGraphComponent } from './components/activity-graph/activity-graph.component';
-import { ItemDetailComponent } from './components/item-detail/item-detail.component';
 import { MatchResult } from './pipes/match-result';
 import { MatchType } from './pipes/match-type';
-import { LeagueDetailComponent } from './components/league-detail/league-detail.component';
-import { LoadingComponent } from './containers/loading/loading.component';
-import { MatchHistoryComponent } from './containers/match-history/match-history.component';
-import { SummonerDetailComponent } from './containers/summoner-detail/summoner-detail.component';
-import { CurrentMatchComponent } from './containers/current-match/current-match.component';
 import { SpectatorService } from './services/spectator.service';
 import { AppRoutingModule } from './app-routing.module';
-import { SpectatorComponent } from './containers/spectator/spectator.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { GameDuration } from './pipes/game-duration';
@@ -34,17 +26,9 @@ import {
 @NgModule({
   declarations: [
     AppComponent,
-    SpectatorComponent,
-    CurrentMatchComponent,
-    SummonerDetailComponent,
-    MatchHistoryComponent,
-    LoadingComponent,
-    LeagueDetailComponent,
     MatchType,
     MatchResult,
-    ItemDetailComponent,
-    GameDuration,
-    ActivityGraphComponent
+    GameDuration
   ],
   imports: [
     BrowserModule,

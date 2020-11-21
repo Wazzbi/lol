@@ -2,6 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'matchType' })
 export class MatchType implements PipeTransform {
+
+  // <span>{{ match.gameType | matchType }}</span>
+  
   transform(type: string): string {
     if (type === 'MATCHED_GAME') {
       return 'Ranked';
