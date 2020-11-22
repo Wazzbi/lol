@@ -21,8 +21,13 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@ngrx/effects": "^10.0.1",
+    "@ngrx/store": "^10.0.1",
+    "@ngrx/store-devtools": "^10.0.1",
+    "jquery": "^3.5.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
+    "uikit": "^3.5.9",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

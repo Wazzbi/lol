@@ -1,3 +1,9 @@
+import { environment } from './../environments/environment';
+import { SummonerComponent } from './containers/summoner/summoner.component';
+import { MapsComponent } from './containers/maps/maps.component';
+import { SummonersComponent } from './containers/Summoners/Summoners.component';
+import { ItemsComponent } from './containers/Items/Items.component';
+import { CardComponent } from './components/card/card.component';
 import { LandingPageComponent } from './containers/landing-page/landing-page.component';
 import { SecureImages } from './pipes/secure-images.pipe';
 import { MatchResult } from './pipes/match-result';
@@ -13,11 +19,24 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './state/app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './state/app.effects';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
+    CardComponent,
+    ItemsComponent,
+    SummonersComponent,
+    MapsComponent,
+    SummonerComponent,
+
+
+    // PIPES
     MatchType,
     MatchResult,
     GameDuration,
@@ -28,7 +47,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+
+    // NGRX
+    StoreModule.forRoot({ appState: appReducer }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([AppEffects])
   ],
   providers: [SpectatorService],
   bootstrap: [AppComponent]

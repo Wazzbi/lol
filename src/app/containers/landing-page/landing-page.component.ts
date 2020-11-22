@@ -1,19 +1,27 @@
-import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
-import { SpectatorService } from 'src/app/services/spectator.service';
+import { regions } from '../../../constants';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { findSummoner } from '../../state/app.actions';
+
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
-export class LandingPageComponent implements OnInit {
+export class LandingPageComponent {
 
-  constructor(private riotApi: SpectatorService) {}
+  constructor(
+    private router: Router,
+    private store: Store<{ appState: any }>
+  ) {}
 
-  ngOnInit(): void {
-    // ! ONLY TEST
-    this.riotApi.getSummonerData('herdyn', 'EUN1').subscribe(d => console.log(d));
+  regions = regions;
+
+  searchPlayer(nickname: string, region: string): void {
+    this.store.dispatch(findSummoner({nickname, region}));
+    this.router.navigate(['/summoner']);
   }
 
 }

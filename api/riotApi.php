@@ -31,7 +31,7 @@ if(isset($_POST))
     $_ACC_ID = $data["accID"]; //getMatchHistory
     $_GAME_ID = $data["gameId"]; //getMatchDetail
 
-    $_API_KEY = "RGAPI-7dca6f2b-b7fe-4971-be32-b6d4686fd0a1";
+    $_API_KEY = "RGAPI-4aa2e888-310a-47c3-8ce2-8ac691c9d7b5";
 
     error_reporting(0);
 
