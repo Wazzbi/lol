@@ -1,8 +1,9 @@
+import { LandingPageComponent } from './containers/landing-page/landing-page.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/spectator', pathMatch: 'full' },
+  { path: '', component: LandingPageComponent },
   // { path: 'spectator', component: SpectatorComponent },
   // { path: 'currentMatch', component: CurrentMatchComponent }
 ];

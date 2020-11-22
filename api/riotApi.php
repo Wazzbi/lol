@@ -11,7 +11,7 @@ header("Access-Control-Allow-Origin: *");
 //header("Access-Control-Max-Age: 172800");
 
 if(isset($_POST['image'])){
-    $img = "./{$_POST['image']}.png";
+    $img = "./assets/images/{$_POST['image']}.png";
     header('Content-Type: image/png');
     readfile($img);
 }

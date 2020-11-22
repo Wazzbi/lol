@@ -1,4 +1,5 @@
-import { UtilsService } from './services/utils.service';
+import { LandingPageComponent } from './containers/landing-page/landing-page.component';
+import { SecureImages } from './pipes/secure-images.pipe';
 import { MatchResult } from './pipes/match-result';
 import { MatchType } from './pipes/match-type';
 import { SpectatorService } from './services/spectator.service';
@@ -12,41 +13,24 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ChartsModule } from 'ng2-charts';
-
-import {
-  MatInputModule,
-  MatButtonModule,
-  MatIconModule,
-  MatButtonToggleModule,
-  MatTabsModule,
-  MatSelectModule,
-  MatProgressSpinnerModule
-} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LandingPageComponent,
     MatchType,
     MatchResult,
-    GameDuration
+    GameDuration,
+    SecureImages
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatButtonToggleModule,
-    MatTabsModule,
-    MatSelectModule,
-    MatProgressSpinnerModule,
-    ChartsModule
+    HttpClientModule
   ],
-  providers: [SpectatorService, UtilsService],
+  providers: [SpectatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
