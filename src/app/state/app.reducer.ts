@@ -1,8 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
-import { loadingSummoner, addedSummoner, findSummoner } from './app.actions';
+import { loading, addedSummoner, findSummoner } from './app.actions';
  
 export const initialState = {
-    loadingSummoner: 'false',
+    loading: false,
     summoner: {
         accountId: null,
         id: null,
@@ -16,7 +16,7 @@ export const initialState = {
  
 const _appReducer = createReducer(
   initialState,
-  on(loadingSummoner, (state, {loading}) => ({...state, loading})),
+  on(loading, (state, {loading}) => ({...state, loading})),
   on(addedSummoner, (state, {summoner}) => ({...state, summoner})),
   on(findSummoner, (state) => ({...state, loading: true})),
 );

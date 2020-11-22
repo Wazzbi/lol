@@ -19,7 +19,7 @@ export class AppEffects {
             mergeMap(summoner => {
                 return [
                     ({ type: '[App] Added Summoner', summoner }),
-                    ({ type: '[App] Loading Summoner', loading: false })
+                    ({ type: '[App] Loading', loading: false })
                 ];
             }),
             catchError(() => EMPTY)
