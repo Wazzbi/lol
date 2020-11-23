@@ -21,6 +21,9 @@ import { ItemsComponent } from './containers/Items/Items.component';
 import { CardComponent } from './components/card/card.component';
 import { LandingPageComponent } from './containers/landing-page/landing-page.component';
 import { NavbarComponent } from './containers/navbar/navbar.component';
+import { BegginersComponent } from './containers/begginers/begginers.component';
+import { BuildsComponent } from './containers/builds/builds.component';
+import { PatchNotesComponent } from './containers/patch-notes/patch-notes.component';
 // NGRX
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './state/app.reducer';
@@ -38,6 +41,9 @@ import { AppEffects } from './state/app.effects';
     MapsComponent,
     SummonerComponent,
     NavbarComponent,
+    PatchNotesComponent,
+    BuildsComponent,
+    BegginersComponent,
 
 
     // PIPES

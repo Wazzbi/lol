@@ -29,7 +29,7 @@
 
   </div>
 
-  <div class="uk-child-width-1-3@m" uk-grid uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 300;">
+  <div class="uk-child-width-1-3@m" uk-grid uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 200;">
 
     <a class="uk-link-reset" routerLink="/summoners">
       <app-card [title]="'Summoners'" routerLink></app-card>
@@ -41,7 +41,19 @@
 
     <a class="uk-link-reset" routerLink="/maps">
       <app-card [title]="'Maps'"></app-card>
-    </a>  
+    </a> 
+    
+    <a class="uk-link-reset" routerLink="/patch">
+      <app-card [title]="'Patch Notes'"></app-card>
+    </a> 
+
+    <a class="uk-link-reset" routerLink="/builds">
+      <app-card [title]="'Pro Builds'"></app-card>
+    </a> 
+
+    <a class="uk-link-reset" routerLink="/begginers">
+      <app-card [title]="'For begginers'"></app-card>
+    </a> 
     
   </div>
 
