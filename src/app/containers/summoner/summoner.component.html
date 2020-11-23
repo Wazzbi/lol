@@ -25,72 +25,80 @@
 
   <div class="uk-margin-top uk-flex">
 
-    <!-- first column -->
-    <div class="uk-width-medium uk-section uk-section-muted">
-      <div class="uk-padding-small">
-        <table class="uk-table uk-table-divider">
-          <tbody>
-            <tr>
-              <td>Nickname:</td>
-              <td>{{ (summoner$ | async).name }}</td>
-            </tr>
-            <tr>
-              <td>Summoner level:</td>
-              <td>{{ (summoner$ | async).summonerLevel }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- second column-->
-    <div class="uk-width-expand">
-      <div class="uk-flex">
-        <div *ngFor="let league of leagues$ | async" class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left">
+    <ng-container *ngIf="!(summoner$ | async).status.message; else noSummoner">
+      <!-- first column -->
+      <div class="uk-width-medium uk-section uk-section-muted">
+        <div class="uk-padding-small">
           <table class="uk-table uk-table-divider">
             <tbody>
               <tr>
-                <td>Queue type:</td>
-                <td>{{ league.queueType }}</td>
+                <td>Nickname:</td>
+                <td>{{ (summoner$ | async).name }}</td>
               </tr>
               <tr>
-                <td>Tier:</td>
-                <td>{{ league.tier }}</td>
-              </tr>
-              <tr>
-                <td>Rank:</td>
-                <td>{{ league.rank }}</td>
-              </tr>
-              <tr>
-                <td>League points:</td>
-                <td>{{ league.leaguePoints }}</td>
-              </tr>
-              <tr>
-                <td>Wins:</td>
-                <td>{{ league.wins }}</td>
-              </tr>
-              <tr>
-                <td>Losses:</td>
-                <td>{{ league.losses }}</td>
+                <td>Summoner level:</td>
+                <td>{{ (summoner$ | async).summonerLevel }}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <div class="uk-flex">
-        <div class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left uk-margin-top"
-          infinite-scroll
-          [infiniteScrollDistance]="scrollDistance"
-          [infiniteScrollThrottle]="throttle"
-          (scrolled)="onScrollDown()"
-        >
-          <p *ngFor="let match of matchArray">
-           {{ match.gameId }}
-          </p>
+      <!-- second column-->
+      <div class="uk-width-expand">
+        <div class="uk-flex" >
+          <div *ngFor="let league of leagues$ | async" class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left">
+            <table class="uk-table uk-table-divider">
+              <tbody>
+                <tr>
+                  <td>Queue type:</td>
+                  <td>{{ league.queueType }}</td>
+                </tr>
+                <tr>
+                  <td>Tier:</td>
+                  <td>{{ league.tier }}</td>
+                </tr>
+                <tr>
+                  <td>Rank:</td>
+                  <td>{{ league.rank }}</td>
+                </tr>
+                <tr>
+                  <td>League points:</td>
+                  <td>{{ league.leaguePoints }}</td>
+                </tr>
+                <tr>
+                  <td>Wins:</td>
+                  <td>{{ league.wins }}</td>
+                </tr>
+                <tr>
+                  <td>Losses:</td>
+                  <td>{{ league.losses }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="uk-flex">
+          <div class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left uk-margin-top"
+            infinite-scroll
+            [infiniteScrollDistance]="scrollDistance"
+            [infiniteScrollThrottle]="throttle"
+            (scrolled)="onScrollDown()"
+          >
+            <p *ngFor="let match of matchArray">
+            {{ match.gameId }}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </ng-container>
+
+    <ng-template #noSummoner>
+      <div class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left">
+            Summoner not found
+      </div>
+    </ng-template>
 
   </div>
 </div>

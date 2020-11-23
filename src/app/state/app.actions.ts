@@ -7,6 +7,7 @@ import { Match } from '../models/match';
 export const addSummonerRegion = createAction('[App] Add Summoner Region Complete', props<{ region: string }>());
 export const addSummoner = createAction('[App] Add Summoner', props<{ nickname: string, region: string }>());
 export const addSummonerComplete = createAction('[App] Add Summoner Complete', props<{ summoner: Summoner }>());
+export const clearSummonerComplete = createAction('[App] Clear Summoner Complete');
 export const addSummonerLeagues = createAction('[App] Add Summoner Leagues', props<{ summonerId: string, region: string }>());
 export const addSummonerLeaguesComplete = createAction('[App] Add Summoner Leagues Complete', props<{ summonerLeagues: SummonerLeague[] }>());
 export const addSummonerMatchHistory = createAction('[App] Add Summoner Match History', props<{ accountId: string, region: string }>());

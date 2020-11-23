@@ -39,9 +39,11 @@ export class SummonerComponent implements OnInit, OnDestroy {
 
     this.matchSub = this.matches$.subscribe((matches: Match[]) => {
       this.matchArray = []; // reset array in view
-      this.matches = matches;
-      this.sum = matches.length >= 20 ? 20 : matches.length;
-      this.appendItems(0, this.sum);
+      if (matches && matches.length) {
+        this.matches = matches;
+        this.sum = matches.length >= 20 ? 20 : matches.length;
+        this.appendItems(0, this.sum);
+      }
     });
   }
 

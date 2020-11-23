@@ -1,4 +1,5 @@
 import { Match } from './match';
+import { Status } from './status';
 import { SummonerLeague } from './summoner-league';
 
 export class AppState {
@@ -13,7 +14,8 @@ export class AppState {
         puuid: string,
         revisionDate: number,
         summonerLevel: number,
-        region: string
+        region: string,
+        status: Status
     };
     summonerLeagues: SummonerLeague[];
     matches: Match[];

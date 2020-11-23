@@ -31,6 +31,7 @@ export class AppEffects {
                 const accountId = summoner.accountId;
                 const region = appState.summoner.region;
                 return [
+                    ({ type: '[App] Clear Summoner Complete' }),
                     ({ type: '[App] Add Summoner Complete', summoner }),
                     ({ type: '[App] Add Summoner Leagues', summonerId, region }),
                     ({ type: '[App] Add Summoner Match History', accountId, region })

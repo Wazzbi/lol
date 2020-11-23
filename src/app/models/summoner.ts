@@ -1,3 +1,5 @@
+import { Status } from './status';
+
 export class Summoner {
   profileIconId: number;
   name: string;
@@ -7,4 +9,5 @@ export class Summoner {
   id: string;
   revisionDate: number;
   region: string;
+  status: Status;
 }
