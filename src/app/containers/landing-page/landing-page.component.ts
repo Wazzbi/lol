@@ -1,3 +1,4 @@
+import { AppState } from 'src/app/models/app-state';
 import { regions } from '../../../constants';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,12 +13,12 @@ import { findSummoner } from '../../state/app.actions';
 })
 export class LandingPageComponent {
 
+  regions = regions;
+
   constructor(
     private router: Router,
-    private store: Store<{ appState: any }>
+    private store: Store<AppState>
   ) {}
-
-  regions = regions;
 
   searchPlayer(nickname: string, region: string): void {
     this.store.dispatch(findSummoner({nickname, region}));
