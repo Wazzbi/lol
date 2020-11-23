@@ -55,7 +55,16 @@
       </div>
 
       <div class="uk-flex">
-        fjfkdjdk
+        <div class="search-results"
+          infinite-scroll
+          [infiniteScrollDistance]="scrollDistance"
+          [infiniteScrollThrottle]="throttle"
+          (scrolled)="onScrollDown()"
+        >
+          <p *ngFor="let match of matchArray">
+           {{ match.gameId }}
+          </p>
+        </div>
       </div>
     </div>
 

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 // SERVICE
 import { SpectatorService } from './services/spectator.service';
 // PIPES
@@ -57,6 +58,7 @@ import { AppEffects } from './state/app.effects';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    InfiniteScrollModule,
 
     // NGRX
     StoreModule.forRoot({ appState: appReducer }),
