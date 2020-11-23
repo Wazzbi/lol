@@ -21,7 +21,7 @@ export class LandingPageComponent {
   ) {}
 
   searchPlayer(nickname: string, region: string): void {
-    this.store.dispatch(addSummonerRegion({region}))
+    this.store.dispatch(addSummonerRegion({region}));
     this.store.dispatch(addSummoner({nickname, region}));
     this.router.navigate(['/summoner']);
   }

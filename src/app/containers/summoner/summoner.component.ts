@@ -1,4 +1,4 @@
-import { map } from 'rxjs/operators';
+import { regions } from '../../../constants';
 import { Match } from './../../models/match';
 import { SummonerLeague } from './../../models/summoner-league';
 import { Observable, Subscription } from 'rxjs';
@@ -7,6 +7,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectSummoner, selectSummonerLeagues, selectSummonerMatches } from 'src/app/state/app.selectors';
 import { State } from 'src/app/models/state';
+import { addSummoner, addSummonerRegion } from '../../state/app.actions';
 
 @Component({
   selector: 'app-summoner',
@@ -17,6 +18,8 @@ export class SummonerComponent implements OnInit, OnDestroy {
   summoner$: Observable<Summoner>;
   leagues$: Observable<SummonerLeague[]>;
   matches$: Observable<Match[]>;
+
+  regions = regions;
 
   // INFINITIVE SCROLL
   matchSub: Subscription;
@@ -35,6 +38,7 @@ export class SummonerComponent implements OnInit, OnDestroy {
     this.matches$ = this.store.select(selectSummonerMatches);
 
     this.matchSub = this.matches$.subscribe((matches: Match[]) => {
+      this.matchArray = []; // reset array in view
       this.matches = matches;
       this.sum = matches.length >= 20 ? 20 : matches.length;
       this.appendItems(0, this.sum);
@@ -52,7 +56,6 @@ export class SummonerComponent implements OnInit, OnDestroy {
   }
 
   onScrollDown() {
-
     if (this.matches.length <= 20) {
       return;
     }
@@ -60,6 +63,11 @@ export class SummonerComponent implements OnInit, OnDestroy {
     const start = this.sum;
     this.sum += ((this.sum + 20) <= this.matches.length) ? 20 : (this.matches.length - this.sum);
     this.appendItems(start, this.sum);
+  }
+
+  searchPlayer(nickname: string, region: string): void {
+    this.store.dispatch(addSummonerRegion({region}));
+    this.store.dispatch(addSummoner({nickname, region}));
   }
 
   ngOnDestroy(): void {

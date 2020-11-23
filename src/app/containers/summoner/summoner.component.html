@@ -1,4 +1,28 @@
+<nav class="uk-navbar-container" uk-navbar>
+  <div class="uk-navbar-center">
+
+    <div class="uk-navbar-item">
+      <div class="uk-width-small">
+        <select #region class="uk-select">
+            <option *ngFor="let region of regions">{{ region }}</option>
+        </select>
+    </div>
+    </div>
+
+    <div class="uk-navbar-item">
+      <div class="uk-search uk-search-default uk-background-default uk-width-medium">
+        <span uk-search-icon></span>
+        <input #player class="uk-search-input" type="search" placeholder="Player's nickname" (keyup.enter)="searchPlayer(player.value, region.value)">
+      </div>
+
+      <button class="uk-button uk-button-danger" (click)="searchPlayer(player.value, region.value)">Search</button>
+    </div>
+
+  </div>
+</nav>
+
 <div class="uk-container">
+
   <div class="uk-margin-top uk-flex">
 
     <!-- first column -->
@@ -20,9 +44,9 @@
     </div>
 
     <!-- second column-->
-    <div class="uk-width-expand uk-margin-left" uk-grid>
+    <div class="uk-width-expand">
       <div class="uk-flex">
-        <div *ngFor="let league of leagues$ | async" class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-right">
+        <div *ngFor="let league of leagues$ | async" class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left">
           <table class="uk-table uk-table-divider">
             <tbody>
               <tr>
@@ -55,7 +79,7 @@
       </div>
 
       <div class="uk-flex">
-        <div class="search-results"
+        <div class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left uk-margin-top"
           infinite-scroll
           [infiniteScrollDistance]="scrollDistance"
           [infiniteScrollThrottle]="throttle"
