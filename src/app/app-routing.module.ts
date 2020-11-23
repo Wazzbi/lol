@@ -7,11 +7,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent },
+  { path: '', component: LandingPageComponent, data: {animation: 'LandingPage'} },
   { path: 'summoners', component: SummonersComponent },
   { path: 'items', component: ItemsComponent },
   { path: 'maps', component: MapsComponent },
-  { path: 'summoner', component: SummonerComponent }
+  { path: 'summoner', component: SummonerComponent, data: {animation: 'SummonerPage'} }
   // { path: '**', component:  } page not found 404
 ];
 

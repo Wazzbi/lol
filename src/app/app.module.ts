@@ -1,24 +1,27 @@
 import { environment } from './../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+// SERVICE
+import { SpectatorService } from './services/spectator.service';
+// PIPES
+import { SecureImages } from './pipes/secure-images.pipe';
+import { MatchResult } from './pipes/match-result';
+import { MatchType } from './pipes/match-type';
+import { GameDuration } from './pipes/game-duration';
+// COMPONENTS
 import { SummonerComponent } from './containers/summoner/summoner.component';
 import { MapsComponent } from './containers/maps/maps.component';
 import { SummonersComponent } from './containers/Summoners/Summoners.component';
 import { ItemsComponent } from './containers/Items/Items.component';
 import { CardComponent } from './components/card/card.component';
 import { LandingPageComponent } from './containers/landing-page/landing-page.component';
-import { SecureImages } from './pipes/secure-images.pipe';
-import { MatchResult } from './pipes/match-result';
-import { MatchType } from './pipes/match-type';
-import { SpectatorService } from './services/spectator.service';
-import { AppRoutingModule } from './app-routing.module';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { GameDuration } from './pipes/game-duration';
-
-import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './containers/navbar/navbar.component';
+// NGRX
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './state/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -34,6 +37,7 @@ import { AppEffects } from './state/app.effects';
     SummonersComponent,
     MapsComponent,
     SummonerComponent,
+    NavbarComponent,
 
 
     // PIPES
