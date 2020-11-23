@@ -19,9 +19,11 @@
           </select>
       </div>
 
-      <div class="uk-width-2-5">
-        <input #player class="uk-input" type="text" placeholder="Player's nickname" (keyup.enter)="searchPlayer(player.value, region.value)">
+      <div class="uk-search uk-search-default uk-background-default uk-width-2-5">
+        <span uk-search-icon></span>
+        <input #player class="uk-search-input" type="search" placeholder="Player's nickname" (keyup.enter)="searchPlayer(player.value, region.value)">
       </div>
+
 
       <button class="uk-button uk-button-danger" (click)="searchPlayer(player.value, region.value)">Search</button>
       
@@ -51,8 +53,8 @@
       <app-card [title]="'Pro Builds'"></app-card>
     </a> 
 
-    <a class="uk-link-reset" routerLink="/begginers">
-      <app-card [title]="'For begginers'"></app-card>
+    <a class="uk-link-reset" routerLink="/beginners">
+      <app-card [title]="'For beginners'"></app-card>
     </a> 
     
   </div>

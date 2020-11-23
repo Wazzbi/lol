@@ -49,7 +49,7 @@ export const slideInAnimation =
       ]),
       query(':enter', animateChild()),
     ]),
-    transition('* => LandingPage', [
+    transition('SummonersPage => LandingPage', [
       style({ position: 'relative' }),
       query(':enter, :leave', [
         style({
@@ -58,43 +58,163 @@ export const slideInAnimation =
           left: 0,
           width: '100%'
         })
-      ]),
+      ], { optional: true }),
       query(':enter', [
         style({ left: '-100%', opacity: 0 })
       ]),
-      query(':leave', animateChild()),
+      query(':leave', animateChild(), { optional: true }),
       group([
         query(':leave', [
           animate('300ms ease-out', style({ left: '100%', opacity: 0 }))
-        ]),
+        ], { optional: true }),
         query(':enter', [
           animate('300ms ease-out', style({ left: '0%', opacity: 1 }))
         ])
       ]),
       query(':enter', animateChild()),
     ]),
-    // transition('* <=> FilterPage', [
-    //   style({ position: 'relative' }),
-    //   query(':enter, :leave', [
-    //     style({
-    //       position: 'absolute',
-    //       top: 0,
-    //       left: 0,
-    //       width: '100%'
-    //     })
-    //   ]),
-    //   query(':enter', [
-    //     style({ left: '-100%' })
-    //   ]),
-    //   query(':leave', animateChild()),
-    //   group([
-    //     query(':leave', [
-    //       animate('200ms ease-out', style({ left: '100%' }))
-    //     ]),
-    //     query(':enter', [
-    //       animate('300ms ease-out', style({ left: '0%' }))
-    //     ])
-    //   ]),
-    //   query(':enter', animateChild()),
-    // ])
+    transition('ItemsPage => LandingPage', [
+      style({ position: 'relative' }),
+      query(':enter, :leave', [
+        style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%'
+        })
+      ], { optional: true }),
+      query(':enter', [
+        style({ left: '-100%', opacity: 0 })
+      ]),
+      query(':leave', animateChild(), { optional: true }),
+      group([
+        query(':leave', [
+          animate('300ms ease-out', style({ left: '100%', opacity: 0 }))
+        ], { optional: true }),
+        query(':enter', [
+          animate('300ms ease-out', style({ left: '0%', opacity: 1 }))
+        ])
+      ]),
+      query(':enter', animateChild()),
+    ]),
+    transition('MapsPage => LandingPage', [
+      style({ position: 'relative' }),
+      query(':enter, :leave', [
+        style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%'
+        })
+      ], { optional: true }),
+      query(':enter', [
+        style({ left: '-100%', opacity: 0 })
+      ]),
+      query(':leave', animateChild(), { optional: true }),
+      group([
+        query(':leave', [
+          animate('300ms ease-out', style({ left: '100%', opacity: 0 }))
+        ], { optional: true }),
+        query(':enter', [
+          animate('300ms ease-out', style({ left: '0%', opacity: 1 }))
+        ])
+      ]),
+      query(':enter', animateChild()),
+    ]),
+    transition('SummonerPage => LandingPage', [
+      style({ position: 'relative' }),
+      query(':enter, :leave', [
+        style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%'
+        })
+      ], { optional: true }),
+      query(':enter', [
+        style({ left: '-100%', opacity: 0 })
+      ]),
+      query(':leave', animateChild(), { optional: true }),
+      group([
+        query(':leave', [
+          animate('300ms ease-out', style({ left: '100%', opacity: 0 }))
+        ], { optional: true }),
+        query(':enter', [
+          animate('300ms ease-out', style({ left: '0%', opacity: 1 }))
+        ])
+      ]),
+      query(':enter', animateChild()),
+    ]),
+    transition('PatchPage => LandingPage', [
+      style({ position: 'relative' }),
+      query(':enter, :leave', [
+        style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%'
+        })
+      ], { optional: true }),
+      query(':enter', [
+        style({ left: '-100%', opacity: 0 })
+      ]),
+      query(':leave', animateChild(), { optional: true }),
+      group([
+        query(':leave', [
+          animate('300ms ease-out', style({ left: '100%', opacity: 0 }))
+        ], { optional: true }),
+        query(':enter', [
+          animate('300ms ease-out', style({ left: '0%', opacity: 1 }))
+        ])
+      ]),
+      query(':enter', animateChild()),
+    ]),
+    transition('BuildsPage => LandingPage', [
+      style({ position: 'relative' }),
+      query(':enter, :leave', [
+        style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%'
+        })
+      ], { optional: true }),
+      query(':enter', [
+        style({ left: '-100%', opacity: 0 })
+      ]),
+      query(':leave', animateChild(), { optional: true }),
+      group([
+        query(':leave', [
+          animate('300ms ease-out', style({ left: '100%', opacity: 0 }))
+        ], { optional: true }),
+        query(':enter', [
+          animate('300ms ease-out', style({ left: '0%', opacity: 1 }))
+        ])
+      ]),
+      query(':enter', animateChild()),
+    ]),
+    transition('BeginnersPage => LandingPage', [
+      style({ position: 'relative' }),
+      query(':enter, :leave', [
+        style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%'
+        })
+      ], { optional: true }),
+      query(':enter', [
+        style({ left: '-100%', opacity: 0 })
+      ]),
+      query(':leave', animateChild(), { optional: true }),
+      group([
+        query(':leave', [
+          animate('300ms ease-out', style({ left: '100%', opacity: 0 }))
+        ], { optional: true }),
+        query(':enter', [
+          animate('300ms ease-out', style({ left: '0%', opacity: 1 }))
+        ])
+      ]),
+      query(':enter', animateChild()),
+    ]),
   ]);

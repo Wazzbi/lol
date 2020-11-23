@@ -6,4 +6,5 @@ export class Summoner {
   accountId: string;
   id: string;
   revisionDate: number;
+  region: string;
 }

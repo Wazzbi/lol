@@ -21,7 +21,7 @@ import { ItemsComponent } from './containers/Items/Items.component';
 import { CardComponent } from './components/card/card.component';
 import { LandingPageComponent } from './containers/landing-page/landing-page.component';
 import { NavbarComponent } from './containers/navbar/navbar.component';
-import { BegginersComponent } from './containers/begginers/begginers.component';
+import { BeginnersComponent } from './containers/beginners/beginners.component';
 import { BuildsComponent } from './containers/builds/builds.component';
 import { PatchNotesComponent } from './containers/patch-notes/patch-notes.component';
 // NGRX
@@ -43,8 +43,7 @@ import { AppEffects } from './state/app.effects';
     NavbarComponent,
     PatchNotesComponent,
     BuildsComponent,
-    BegginersComponent,
-
+    BeginnersComponent,
 
     // PIPES
     MatchType,

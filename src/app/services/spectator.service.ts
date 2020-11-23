@@ -24,8 +24,8 @@ export class SpectatorService {
       this.RIOT_URL, `name=${name}&region=${region}&action=getSummonerData`);
   }
 
-  getSummonerLeague(id: string, region: string): Observable<SummonerLeague> {
-    return this.httpClient.post<SummonerLeague>(
+  getSummonerLeague(id: string, region: string): Observable<SummonerLeague[]> {
+    return this.httpClient.post<SummonerLeague[]>(
       this.RIOT_URL, `id=${id}&region=${region}&action=getSummonerLeague`);
   }
 

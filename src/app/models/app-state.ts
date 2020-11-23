@@ -1,5 +1,10 @@
+import { Match } from './match';
+import { SummonerLeague } from './summoner-league';
+
 export class AppState {
-    loading: boolean;
+    loadingSummoner: boolean;
+    loadingLeagues: boolean;
+    loadingMatches: boolean;
     summoner: {
         accountId: string,
         id: string,
@@ -7,6 +12,10 @@ export class AppState {
         profileIconId: number,
         puuid: string,
         revisionDate: number,
-        summonerLevel: number
+        summonerLevel: number,
+        region: string
     };
+    summonerLeagues: SummonerLeague[];
+    matches: Match[];
 }
+

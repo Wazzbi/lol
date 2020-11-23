@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 // COMPONENTS
-import { BegginersComponent } from './containers/begginers/begginers.component';
+import { BeginnersComponent } from './containers/beginners/beginners.component';
 import { BuildsComponent } from './containers/builds/builds.component';
 import { PatchNotesComponent } from './containers/patch-notes/patch-notes.component';
 import { SummonerComponent } from './containers/summoner/summoner.component';
@@ -12,13 +12,13 @@ import { LandingPageComponent } from './containers/landing-page/landing-page.com
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent, data: {animation: 'LandingPage'} },
-  { path: 'summoners', component: SummonersComponent },
-  { path: 'items', component: ItemsComponent },
-  { path: 'maps', component: MapsComponent },
+  { path: 'summoners', component: SummonersComponent, data: {animation: 'SummonersPage'} },
+  { path: 'items', component: ItemsComponent, data: {animation: 'ItemsPage'} },
+  { path: 'maps', component: MapsComponent, data: {animation: 'MapsPage'} },
   { path: 'summoner', component: SummonerComponent, data: {animation: 'SummonerPage'} },
-  { path: 'patch', component: PatchNotesComponent },
-  { path: 'builds', component: BuildsComponent },
-  { path: 'begginers', component: BegginersComponent }
+  { path: 'patch', component: PatchNotesComponent, data: {animation: 'PatchPage'} },
+  { path: 'builds', component: BuildsComponent, data: {animation: 'BuildsPage'} },
+  { path: 'beginners', component: BeginnersComponent, data: {animation: 'BeginnersPage'} }
   // { path: '**', component:  } page not found 404
 ];
 
