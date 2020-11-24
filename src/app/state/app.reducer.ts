@@ -4,7 +4,7 @@ import {
   //isloading,
   addSummonerComplete,
   addSummoner,
-  clearSummonerComplete,
+  clearComplete,
   addSummonerLeagues,
   addSummonerLeaguesComplete,
   addSummonerRegion,
@@ -42,7 +42,7 @@ const _appReducer = createReducer(
 
   on(addSummoner, (state) => ({...state, loadingSummoner: true})),
   on(addSummonerComplete, (state, {summoner}) => ({...state, summoner: {...state.summoner, ...summoner}, loadingSummoner: false})),
-  on(clearSummonerComplete, (state) => ({...state, summoner: initialState.summoner})),
+  on(clearComplete, (state) => ({...initialState})),
 
   on(addSummonerLeagues, (state) => ({...state, loadingLeagues: true})),
   on(addSummonerLeaguesComplete, (state, {summonerLeagues}) => ({...state, summonerLeagues, loadingLeagues: false})),

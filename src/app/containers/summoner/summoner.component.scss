@@ -1,0 +1,11 @@
+.gg-scroll-btn {
+    position: fixed; 
+    bottom: 10px; 
+    right: 10px; 
+    opacity: 0.3;
+    transition: ease-in-out all .3s;
+
+    &:hover {
+        opacity: 1;
+    }
+}
