@@ -14,9 +14,8 @@ $champSource = 'dragontail-10.10.5/10.10.3224670';
 $jsonChampions = file_get_contents("$champSource/data/en_US/championFull.json");
 $champions = json_decode($jsonChampions, true);
 
-if(isset($_POST['champIconId'])){
-    $champName = $champions['keys'][$_POST['champIconId']];
-    $img = "./$champSource/img/champion/$champName.png";
+if(isset($_POST['champIconName'])){
+    $img = "./$champSource/img/champion/{$_POST['champIconName']}.png";
     header('Content-Type: image/png');
     readfile($img);
 }

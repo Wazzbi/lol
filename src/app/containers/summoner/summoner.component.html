@@ -96,9 +96,16 @@
             <table class="uk-table uk-table-striped">
               <tbody>
                 <tr *ngFor="let match of matchArray">
+                  <td>
+                    <ng-container *ngIf="playerChampName(match) | secure | async as icon; else loading">
+                      <img [src]= icon alt="champ_icon">
+                    </ng-container>
+                    <ng-template #loading>
+                      <img src= "../../../assets/loading.svg" alt="loading...">
+                    </ng-template>
+                  </td>
+                  <td>{{ playerChampName(match) }}</td>
                   <td>{{ match.gameId }}</td>
-                  <td><img [src]= "84 | secure | async" alt="Emblem_BRONZE"></td>
-                  <td>Table Data</td>
                 </tr>
               </tbody>
             </table>

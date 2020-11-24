@@ -1,6 +1,6 @@
-import { MatchDetail } from './../../models/match-detail';
+import { MatchDetail, ParticipantIdentity } from './../../models/match-detail';
 import { map } from 'rxjs/operators';
-import { regions } from '../../../constants';
+import { champions, regions } from '../../../constants';
 import { Match } from './../../models/match';
 import { SummonerLeague } from './../../models/summoner-league';
 import { Observable, Subscription } from 'rxjs';
@@ -23,6 +23,8 @@ export class SummonerComponent implements OnInit, OnDestroy {
   matches$: Observable<Match[]>;
 
   matchDetailSub: Subscription;
+
+  summonerName: string;
 
   // REGIONS
   regions = regions;
@@ -55,8 +57,8 @@ export class SummonerComponent implements OnInit, OnDestroy {
     });
 
     this.regionSub = this.summoner$.subscribe((summoner: Summoner) => {
-      console.warn(summoner.region);
       this.region = summoner.region;
+      this.summonerName = summoner.name;
     });
   }
 
@@ -85,6 +87,12 @@ export class SummonerComponent implements OnInit, OnDestroy {
   searchPlayer(nickname: string, region: string): void {
     this.store.dispatch(addSummonerRegion({region}));
     this.store.dispatch(addSummoner({nickname, region}));
+  }
+
+  playerChampName(matchDetail: MatchDetail): string {
+    const playerId: number = matchDetail.participantIdentities.find(p => p.player.summonerName === this.summonerName).participantId;
+    const champId = matchDetail.participants.find(p => p.participantId === playerId).championId;
+    return champions[champId];
   }
 
   ngOnDestroy(): void {

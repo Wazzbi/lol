@@ -11,8 +11,8 @@ export class SecureImages implements PipeTransform {
 
   constructor(private backService: BackService) { }
 
-  transform(id: number): any {
-    return this.backService.getChampionIcon(id);
+  transform(name: string): any {
+    return this.backService.getChampionIcon(name);
   }
 
 }

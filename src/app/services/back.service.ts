@@ -12,9 +12,9 @@ export class BackService {
 
   constructor(private httpClient: HttpClient, private sanitizer: DomSanitizer) { }
 
-  getChampionIcon(id: number): any {
+  getChampionIcon(name: string): any {
     return this.httpClient.post<any>(
-      this.BE_URL, `champIconId=${id}`, {headers: this.headers, responseType: 'blob' as 'json'}
+      this.BE_URL, `champIconName=${name}`, {headers: this.headers, responseType: 'blob' as 'json'}
       ).pipe(
         map(d => URL.createObjectURL(d)),
         map(t => this.sanitizer.bypassSecurityTrustUrl(t))
