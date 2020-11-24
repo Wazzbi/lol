@@ -64,10 +64,15 @@ export class SummonerComponent implements OnInit, OnDestroy {
 
   addItems(startIndex = 0, endIndex = 0) {
     for (let i = startIndex; i < endIndex; ++i) {
+      console.log('id ', this.matches[i].gameId);
       this.matchDetailSub = this.riotApi.getMatchDetail(this.matches[i].gameId, this.region).subscribe(
-        (matchDetail: MatchDetail) => this.matchArray.push(matchDetail)
+        (matchDetail: MatchDetail) => {
+          this.matchArray.push(matchDetail);
+          this.matchArray.sort((a, b) => b.gameId - a.gameId);
+        }
       );
     }
+    
   }
   
   appendItems(startIndex, endIndex) {
