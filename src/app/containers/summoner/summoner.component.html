@@ -79,6 +79,12 @@
           </div>
         </div>
 
+        <!-- 
+        <div>
+          <img [src]= "'Emblem_BRONZE' | secure | async" alt="Emblem_BRONZE">
+        </div>
+        -->
+
         <!-- MATCH HISTORY -->
         <div class="uk-flex">
           <div class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left uk-margin-top"
@@ -87,9 +93,15 @@
             [infiniteScrollThrottle]="throttle"
             (scrolled)="onScrollDown()"
           >
-            <p *ngFor="let match of matchArray">
-            {{ match.gameId }}
-            </p>
+            <table class="uk-table uk-table-striped">
+              <tbody>
+                <tr *ngFor="let match of matchArray">
+                  <td>{{ match.gameId }}</td>
+                  <td><img [src]= "84 | secure | async" alt="Emblem_BRONZE"></td>
+                  <td>Table Data</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

@@ -14,7 +14,6 @@ import { MatchHistory } from '../models/matchHistory';
  
 @Injectable()
 export class AppEffects {
- 
   constructor(
     private riotApi: SpectatorService,
     private actions$: Actions,

@@ -10,8 +10,13 @@ header("Access-Control-Allow-Origin: *");
 //Requested-With");
 //header("Access-Control-Max-Age: 172800");
 
-if(isset($_POST['image'])){
-    $img = "./assets/images/{$_POST['image']}.png";
+$champSource = 'dragontail-10.10.5/10.10.3224670';
+$jsonChampions = file_get_contents("$champSource/data/en_US/championFull.json");
+$champions = json_decode($jsonChampions, true);
+
+if(isset($_POST['champIconId'])){
+    $champName = $champions['keys'][$_POST['champIconId']];
+    $img = "./$champSource/img/champion/$champName.png";
     header('Content-Type: image/png');
     readfile($img);
 }
@@ -31,7 +36,7 @@ if(isset($_POST))
     $_ACC_ID = $data["accID"]; //getMatchHistory
     $_GAME_ID = $data["gameId"]; //getMatchDetail
 
-    $_API_KEY = "RGAPI-fe11621f-81bb-483d-b7f3-63ec5b78cd94";
+    $_API_KEY = "RGAPI-070f9e41-3b34-455e-9e88-43425491614a";
 
     error_reporting(0);
 

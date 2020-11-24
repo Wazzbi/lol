@@ -1,3 +1,4 @@
+import { BackService } from './services/back.service';
 import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -65,7 +66,7 @@ import { AppEffects } from './state/app.effects';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects])
   ],
-  providers: [SpectatorService],
+  providers: [SpectatorService, BackService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
