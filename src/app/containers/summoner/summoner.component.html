@@ -97,7 +97,7 @@
               <tbody>
                 <tr *ngFor="let match of matchArray">
                   <td>
-                    <ng-container *ngIf="playerChampName(match) | secure | async as icon; else loading">
+                    <ng-container *ngIf="playerChampName(match) | getImage | async as icon; else loading">
                       <img [src]= icon alt="champ_icon">
                     </ng-container>
                     <ng-template #loading>

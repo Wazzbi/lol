@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { map } from 'rxjs/operators';
 
 @Pipe({
-  name: 'secure'
+  name: 'getImage'
 })
 export class SecureImages implements PipeTransform {
 

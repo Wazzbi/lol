@@ -37,7 +37,7 @@ export class SummonerComponent implements OnInit, OnDestroy {
   matchArray: MatchDetail[] = [];
   sum: number;
   throttle = 300;
-  scrollDistance = 5;
+  scrollDistance = 1;
   direction = 'down';
 
   constructor(private riotApi: SpectatorService, private store: Store<State>) { }
@@ -64,7 +64,6 @@ export class SummonerComponent implements OnInit, OnDestroy {
 
   addItems(startIndex = 0, endIndex = 0) {
     for (let i = startIndex; i < endIndex; ++i) {
-      console.log('id ', this.matches[i].gameId);
       this.matchDetailSub = this.riotApi.getMatchDetail(this.matches[i].gameId, this.region).subscribe(
         (matchDetail: MatchDetail) => {
           this.matchArray.push(matchDetail);

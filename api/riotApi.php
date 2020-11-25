@@ -18,6 +18,11 @@ if(isset($_POST['champIconName'])){
     $img = "./$champSource/img/champion/{$_POST['champIconName']}.png";
     header('Content-Type: image/png');
     readfile($img);
+    // Flush (if any) all the buffers
+    while( ob_get_level() > 0 ) { ob_end_flush(); }
+
+    // Ensure script execution terminates here
+    exit();
 }
 
 if(isset($_POST))
@@ -35,7 +40,7 @@ if(isset($_POST))
     $_ACC_ID = $data["accID"]; //getMatchHistory
     $_GAME_ID = $data["gameId"]; //getMatchDetail
 
-    $_API_KEY = "RGAPI-070f9e41-3b34-455e-9e88-43425491614a";
+    $_API_KEY = "RGAPI-1efe71e0-9b2b-465d-89fd-374a3fffd5fd";
 
     error_reporting(0);
 
