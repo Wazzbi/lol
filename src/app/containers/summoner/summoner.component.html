@@ -95,10 +95,10 @@
           >
             <table class="uk-table uk-table-striped">
               <tbody>
-                <tr *ngFor="let match of matchArray">
+                <tr *ngFor="let matchDetail of matchArray">
                   <app-match-detail
-                    [champImgUrl]="getChampionIcon(match)"
-                    [champName]="playerChampName(match)"
+                    [summonerName]="summonerName"
+                    [matchDetail]="matchDetail"
                   ></app-match-detail>
                 </tr>
               </tbody>

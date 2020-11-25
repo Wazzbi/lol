@@ -1,7 +1,6 @@
 import { BackService } from './../../services/back.service';
-import { MatchDetail, ParticipantIdentity } from './../../models/match-detail';
-import { map } from 'rxjs/operators';
-import { champions, regions } from '../../../constants';
+import { MatchDetail } from './../../models/match-detail';
+import { regions } from '../../../constants';
 import { Match } from './../../models/match';
 import { SummonerLeague } from './../../models/summoner-league';
 import { Observable, Subscription } from 'rxjs';
@@ -24,12 +23,12 @@ export class SummonerComponent implements OnInit, OnDestroy {
   matches$: Observable<Match[]>;
 
   matchDetailSub: Subscription;
+  summonerSub: Subscription;
 
   summonerName: string;
 
   // REGIONS
   regions = regions;
-  regionSub: Subscription;
   region: string;
 
   // INFINITE SCROLL
@@ -57,7 +56,7 @@ export class SummonerComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.regionSub = this.summoner$.subscribe((summoner: Summoner) => {
+    this.summonerSub = this.summoner$.subscribe((summoner: Summoner) => {
       this.region = summoner.region;
       this.summonerName = summoner.name;
     });
@@ -94,19 +93,9 @@ export class SummonerComponent implements OnInit, OnDestroy {
     this.store.dispatch(addSummoner({nickname, region}));
   }
 
-  playerChampName(matchDetail: MatchDetail): string {
-    const playerId: number = matchDetail.participantIdentities.find(p => p.player.summonerName === this.summonerName).participantId;
-    const champId = matchDetail.participants.find(p => p.participantId === playerId).championId;
-    return champions[champId];
-  }
-
-  getChampionIcon(match: MatchDetail): string {
-    return this.backService.getChampionIcon(this.playerChampName(match));
-  }
-
   ngOnDestroy(): void {
     this.matchSub.unsubscribe;
-    this.regionSub.unsubscribe;
+    this.summonerSub.unsubscribe;
     if (this.matchDetailSub) {
       this.matchDetailSub.unsubscribe;
     }

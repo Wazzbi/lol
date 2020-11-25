@@ -2,11 +2,22 @@
   <section>
     <div class="uk-text-center">
       <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-        <img [src]="champImgUrl" alt="champ_icon"> 
+        <img [src]="championIcon" alt="champ_icon"> 
           <div class="uk-transition-slide-bottom-small uk-position-bottom uk-overlay uk-overlay-primary">
-              <span class="uk-h5 uk-margin-remove">{{ champName }}</span>
+              <span class="uk-h5 uk-margin-remove">{{ playerChampName }}</span>
           </div>
       </div>
     </div>
+  </section>
+  <section class="uk-flex-column">
+    <div>{{ playerTeamData.win | matchResult }}</div>
+    <div>{{ matchDetail.gameDuration | gameDuration }}</div>
+    <div>{{ matchDetail.gameCreation | gameCreation }}</div>
+    <div>{{ matchDetail.gameMode | toCapitalize }}</div>
+    <div>{{ matchDetail.gameType | matchType }}</div>
+  </section>
+  <section class="uk-flex-column">
+    <div>{{ playerData.spell1Id }}</div>
+    <div>{{ playerData.spell2Id }}</div>
   </section>
 </div>

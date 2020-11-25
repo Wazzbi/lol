@@ -1,4 +1,7 @@
+import { BackService } from './../../services/back.service';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatchDetail, Participant, Team } from 'src/app/models/match-detail';
+import { champions } from '../../../constants';
 
 @Component({
   selector: 'app-match-detail',
@@ -6,16 +9,34 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./match-detail.component.scss']
 })
 export class MatchDetailComponent implements OnInit {
-  @Input() champImgUrl: string;
-  @Input() champName: string;
+  @Input() summonerName: string;
+  @Input() matchDetail: MatchDetail;
 
-  constructor() { }
+  constructor(private backService: BackService) { }
 
   ngOnInit() {
   }
 
-  tooltipName(name: string): string {
-    return `title: ${name}; pos: left`;
+  get championIcon(): string {
+    return this.backService.getChampionIcon(this.playerChampName);
+  }
+
+  get playerId(): number {
+    return this.matchDetail.participantIdentities.find(p => p.player.summonerName === this.summonerName).participantId;
+  }
+
+  get playerData(): Participant {
+    return this.matchDetail.participants.find(p => p.participantId === this.playerId);
+  }
+
+  get playerChampName(): string {
+    const champId = this.matchDetail.participants.find(p => p.participantId === this.playerId).championId;
+    return champions[champId];
+  }
+
+  get playerTeamData(): Team {
+    const playerTeamId = this.matchDetail.participants.find(p => p.participantId === this.playerId).teamId;
+    return this.matchDetail.teams.find(team => team.teamId === playerTeamId);
   }
 
 }

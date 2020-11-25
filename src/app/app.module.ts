@@ -15,6 +15,8 @@ import { SecureImages } from './pipes/secure-images.pipe';
 import { MatchResult } from './pipes/match-result';
 import { MatchType } from './pipes/match-type';
 import { GameDuration } from './pipes/game-duration';
+import { GameCreation } from './pipes/game-creation.pipe';
+import { ToCapitalize } from './pipes/to-capitalize.pipe';
 // COMPONENTS
 import { SummonerComponent } from './containers/summoner/summoner.component';
 import { MapsComponent } from './containers/maps/maps.component';
@@ -53,7 +55,9 @@ import { AppEffects } from './state/app.effects';
     MatchType,
     MatchResult,
     GameDuration,
-    SecureImages
+    SecureImages,
+    GameCreation,
+    ToCapitalize,
   ],
   imports: [
     BrowserModule,
