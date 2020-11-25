@@ -96,10 +96,10 @@
             <table class="uk-table uk-table-striped">
               <tbody>
                 <tr *ngFor="let match of matchArray">
-                  <td>
-                    <img [src]="backService.getChampionIcon(playerChampName(match))" alt="champ_icon">   
-                  <td>{{ playerChampName(match) }}</td>
-                  <td>{{ match.gameId }}</td>
+                  <app-match-detail
+                    [champImgUrl]="getChampionIcon(match)"
+                    [champName]="playerChampName(match)"
+                  ></app-match-detail>
                 </tr>
               </tbody>
             </table>

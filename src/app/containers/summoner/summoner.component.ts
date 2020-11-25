@@ -100,6 +100,10 @@ export class SummonerComponent implements OnInit, OnDestroy {
     return champions[champId];
   }
 
+  getChampionIcon(match: MatchDetail): string {
+    return this.backService.getChampionIcon(this.playerChampName(match));
+  }
+
   ngOnDestroy(): void {
     this.matchSub.unsubscribe;
     this.regionSub.unsubscribe;

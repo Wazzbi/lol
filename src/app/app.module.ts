@@ -26,6 +26,7 @@ import { BuildsComponent } from './containers/builds/builds.component';
 import { PatchNotesComponent } from './containers/patch-notes/patch-notes.component';
 import { SummonersComponent } from './containers/summoners/summoners.component';
 import { ItemsComponent } from './containers/items/items.component';
+import { MatchDetailComponent } from './components/match-detail/match-detail.component';
 // NGRX
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './state/app.reducer';
@@ -46,6 +47,7 @@ import { AppEffects } from './state/app.effects';
     PatchNotesComponent,
     BuildsComponent,
     BeginnersComponent,
+    MatchDetailComponent,
 
     // PIPES
     MatchType,
