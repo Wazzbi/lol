@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "legendary-d0cad"
+  },
+  "targets": {
+    "legendary-d0cad": {
+      "hosting": {
+        "lol": [
+          "legendary-d0cad"
+        ]
+      }
+    }
+  }
+}

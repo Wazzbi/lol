@@ -1,7 +1,7 @@
 ## TODO
 
 - do dlaždic na landing page načítat novinky
-- udělat clear league protože se tam dostává status jako u summoner když je nenalezen nicjname hráče
+- když se nenačtou ligy / match history
 
 # Lol
 

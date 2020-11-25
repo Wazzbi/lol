@@ -1,3 +1,4 @@
+import { BackService } from './../../services/back.service';
 import { MatchDetail, ParticipantIdentity } from './../../models/match-detail';
 import { map } from 'rxjs/operators';
 import { champions, regions } from '../../../constants';
@@ -40,7 +41,7 @@ export class SummonerComponent implements OnInit, OnDestroy {
   scrollDistance = 1;
   direction = 'down';
 
-  constructor(private riotApi: SpectatorService, private store: Store<State>) { }
+  constructor(private riotApi: SpectatorService, public backService: BackService, private store: Store<State>) { }
 
   ngOnInit() {
     this.summoner$ = this.store.select(selectSummoner);

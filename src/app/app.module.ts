@@ -18,14 +18,14 @@ import { GameDuration } from './pipes/game-duration';
 // COMPONENTS
 import { SummonerComponent } from './containers/summoner/summoner.component';
 import { MapsComponent } from './containers/maps/maps.component';
-import { SummonersComponent } from './containers/Summoners/Summoners.component';
-import { ItemsComponent } from './containers/Items/Items.component';
 import { CardComponent } from './components/card/card.component';
 import { LandingPageComponent } from './containers/landing-page/landing-page.component';
 import { NavbarComponent } from './containers/navbar/navbar.component';
 import { BeginnersComponent } from './containers/beginners/beginners.component';
 import { BuildsComponent } from './containers/builds/builds.component';
 import { PatchNotesComponent } from './containers/patch-notes/patch-notes.component';
+import { SummonersComponent } from './containers/summoners/summoners.component';
+import { ItemsComponent } from './containers/items/items.component';
 // NGRX
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './state/app.reducer';

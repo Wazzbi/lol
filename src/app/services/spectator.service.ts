@@ -17,7 +17,7 @@ import { ItemList } from '../models/item-list';
 export class SpectatorService {
   constructor(private httpClient: HttpClient) {}
 
-  private RIOT_URL = 'http://localhost/riotApi/lol/api/riotApi.php';
+  private RIOT_URL = 'http://localhost/lol/api/riotApi.php';
 
   getSummonerData(name: string, region: string): Observable<Summoner> {
     return this.httpClient.post<Summoner>(

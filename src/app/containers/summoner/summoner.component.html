@@ -97,13 +97,7 @@
               <tbody>
                 <tr *ngFor="let match of matchArray">
                   <td>
-                    <ng-container *ngIf="playerChampName(match) | getImage | async as icon; else loading">
-                      <img [src]= icon alt="champ_icon">
-                    </ng-container>
-                    <ng-template #loading>
-                      <img src= "../../../assets/loading.svg" alt="loading...">
-                    </ng-template>
-                  </td>
+                    <img [src]="backService.getChampionIcon(playerChampName(match))" alt="champ_icon">   
                   <td>{{ playerChampName(match) }}</td>
                   <td>{{ match.gameId }}</td>
                 </tr>

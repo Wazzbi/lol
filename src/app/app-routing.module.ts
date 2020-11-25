@@ -6,8 +6,8 @@ import { BuildsComponent } from './containers/builds/builds.component';
 import { PatchNotesComponent } from './containers/patch-notes/patch-notes.component';
 import { SummonerComponent } from './containers/summoner/summoner.component';
 import { MapsComponent } from './containers/maps/maps.component';
-import { ItemsComponent } from './containers/Items/Items.component';
-import { SummonersComponent } from './containers/Summoners/Summoners.component';
+import { ItemsComponent } from './containers/items/items.component';
+import { SummonersComponent } from './containers/summoners/summoners.component';
 import { LandingPageComponent } from './containers/landing-page/landing-page.component';
 
 const routes: Routes = [

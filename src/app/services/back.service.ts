@@ -7,18 +7,11 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class BackService {
-  private BE_URL = 'http://localhost/riotApi/lol/api/riotApi.php';
-  private headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
   constructor(private httpClient: HttpClient, private sanitizer: DomSanitizer) { }
 
-  getChampionIcon(name: string): any {
-    return this.httpClient.post<any>(
-      this.BE_URL, `champIconName=${name}`, {headers: this.headers, responseType: 'blob' as 'json'}
-      ).pipe(
-        map(d => URL.createObjectURL(d)),
-        map(t => this.sanitizer.bypassSecurityTrustUrl(t))
-      );
+  getChampionIcon(name: string): string {
+    return `http://localhost/lol/api/dragontail-10.10.5/10.10.3224670/img/champion/${name}.png`;
   }
 
 }

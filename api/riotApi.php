@@ -10,20 +10,20 @@ header("Access-Control-Allow-Origin: *");
 //Requested-With");
 //header("Access-Control-Max-Age: 172800");
 
-$champSource = 'dragontail-10.10.5/10.10.3224670';
-$jsonChampions = file_get_contents("$champSource/data/en_US/championFull.json");
-$champions = json_decode($jsonChampions, true);
+// $champSource = 'dragontail-10.10.5/10.10.3224670';
+// $jsonChampions = file_get_contents("$champSource/data/en_US/championFull.json");
+// $champions = json_decode($jsonChampions, true);
 
-if(isset($_POST['champIconName'])){
-    $img = "./$champSource/img/champion/{$_POST['champIconName']}.png";
-    header('Content-Type: image/png');
-    readfile($img);
-    // Flush (if any) all the buffers
-    while( ob_get_level() > 0 ) { ob_end_flush(); }
+// if(isset($_POST['champIconName'])){
+//     $img = "./$champSource/img/champion/{$_POST['champIconName']}.png";
+//     header('Content-Type: image/png');
+//     readfile($img);
+//     // Flush (if any) all the buffers
+//     while( ob_get_level() > 0 ) { ob_end_flush(); }
 
-    // Ensure script execution terminates here
-    exit();
-}
+//     // Ensure script execution terminates here
+//     exit();
+// }
 
 if(isset($_POST))
 {
@@ -40,7 +40,7 @@ if(isset($_POST))
     $_ACC_ID = $data["accID"]; //getMatchHistory
     $_GAME_ID = $data["gameId"]; //getMatchDetail
 
-    $_API_KEY = "RGAPI-1efe71e0-9b2b-465d-89fd-374a3fffd5fd";
+    $_API_KEY = "RGAPI-1421809d-f9f9-4b4f-8511-a7a463e1a3f5";
 
     error_reporting(0);
 
