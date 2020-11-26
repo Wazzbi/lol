@@ -13,15 +13,18 @@ export class BackService {
   summonerSpellsList: SummonerSpellList;
   itemList: ItemList;
 
+  // not include All assets
+  dragontailPath = 'dragontail-10.24.1/10.24.1';
+
   constructor(private httpClient: HttpClient) {
-    this.httpClient.get<any>('http://localhost/lol/api/dragontail-10.10.5/10.10.3224670/data/en_US/summoner.json')
+    this.httpClient.get<any>(`http://localhost/lol/api/${this.dragontailPath}/data/en_US/summoner.json`)
       .subscribe(s => { this.summonerSpellsList = s.data; });
-    this.httpClient.get<any>('http://localhost/lol/api/dragontail-10.10.5/10.10.3224670/data/en_US/item.json')
+    this.httpClient.get<any>(`http://localhost/lol/api/${this.dragontailPath}/data/en_US/item.json`)
       .subscribe(i => { this.itemList = i.data; });
   }
 
   getChampionIcon(name: string): string {
-    return `http://localhost/lol/api/dragontail-10.10.5/10.10.3224670/img/champion/${name}.png`;
+    return `http://localhost/lol/api/${this.dragontailPath}/img/champion/${name}.png`;
   }
 
   getSummonerSpellName(id: number): string {
@@ -36,26 +39,41 @@ export class BackService {
    * @param summonerSpell those spells on keyboard D+F (usually)
    */
   getSpellIcon(name: string, summonerSpell: boolean = false): string {
-    // ! exception somehow riot has second name for 'ignite'
+    // ! exception somehow riot has second names...
     if (name === 'Ignite') {
       name = 'Dot';
     }
-
-    return `http://localhost/lol/api/dragontail-10.10.5/10.10.3224670/img/spell/summoner${name}.png`;
+    if (name === 'Ghost') {
+      name = 'Haste';
+    }
+    if (name === 'Cleanse') {
+      name = 'Boost';
+    }
+    if (name === 'Clarity') {
+      name = 'Mana';
+    }
+    if (name === 'Mark') {
+      name = 'Snowball';
+    }
+    return `http://localhost/lol/api/${this.dragontailPath}/img/spell/summoner${name}.png`;
   }
 
   getQueueData(id: number, data: 'map'|'description'|'notes'): string {
     return queues.find((queue: Queue) => queue.queueId === id)[data];
   }
 
+  // TODO: budu muset zkontrolovat všechny itemy a přemapovat ty co nebudou mít shodu
   getItemIcon(id: number) {
-    return `http://localhost/lol/api/dragontail-10.10.5/10.10.3224670/img/item/${id}.png`;
+    return `http://localhost/lol/api/${this.dragontailPath}/img/item/${id}.png`;
   }
 
   // TODO: v budoucnu zde jsou celá metadata itemu
   getItemName(id: number): string {
-    console.log(id);
-    return this.itemList[id].name;
+    if (this.itemList && this.itemList[id] && this.itemList[id].name) {
+      return this.itemList[id].name;
+    } else {
+      return null;
+    }
   }
 
 }

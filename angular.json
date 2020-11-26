@@ -140,5 +140,8 @@
       }
     }
   },
-  "defaultProject": "lol"
+  "defaultProject": "lol",
+  "cli": {
+    "analytics": false
+  }
 }
