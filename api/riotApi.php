@@ -1,6 +1,7 @@
 <?php
 
-header("Access-Control-Allow-Origin: *");
+// nasetovaný access v .htaccess souboru
+// header("Access-Control-Allow-Origin: *");
 //header("Access-Control-Allow-Credentials: true");
 //header("Access-Control-Allow-Methods: POST, GET");
 //header('P3P: CP="CAO PSA OUR"'); // Makes IE to support cookies

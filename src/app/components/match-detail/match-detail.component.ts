@@ -39,4 +39,8 @@ export class MatchDetailComponent implements OnInit {
     return this.matchDetail.teams.find(team => team.teamId === playerTeamId);
   }
 
+  summonerSpellName(id: number): string {
+    return this.backService.getSummonerSpellName(id);
+  }
+
 }
