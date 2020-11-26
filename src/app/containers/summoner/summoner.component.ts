@@ -7,7 +7,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Summoner } from './../../models/summoner';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectSummoner, selectSummonerLeagues, selectSummonerMatches } from 'src/app/state/app.selectors';
+import { selectLoadingLeagues, selectSummoner, selectSummonerLeagues, selectSummonerMatches } from 'src/app/state/app.selectors';
 import { State } from 'src/app/models/state';
 import { addSummoner, addSummonerRegion } from '../../state/app.actions';
 import { SpectatorService } from 'src/app/services/spectator.service';
@@ -20,12 +20,15 @@ import { SpectatorService } from 'src/app/services/spectator.service';
 export class SummonerComponent implements OnInit, OnDestroy {
   summoner$: Observable<Summoner>;
   leagues$: Observable<SummonerLeague[]>;
+  loadingLeagues$: Observable<boolean>;
   matches$: Observable<Match[]>;
+
 
   matchDetailSub: Subscription;
   summonerSub: Subscription;
 
   summonerName: string;
+  summonerId: string;
 
   // REGIONS
   regions = regions;
@@ -46,6 +49,7 @@ export class SummonerComponent implements OnInit, OnDestroy {
     this.summoner$ = this.store.select(selectSummoner);
     this.leagues$ = this.store.select(selectSummonerLeagues);
     this.matches$ = this.store.select(selectSummonerMatches);
+    this.loadingLeagues$ = this.store.select(selectLoadingLeagues);
 
     this.matchSub = this.matches$.subscribe((matches: Match[]) => {
       this.matchArray = []; // reset array in view
@@ -59,6 +63,7 @@ export class SummonerComponent implements OnInit, OnDestroy {
     this.summonerSub = this.summoner$.subscribe((summoner: Summoner) => {
       this.region = summoner.region;
       this.summonerName = summoner.name;
+      this.summonerId = summoner.id;
     });
   }
 
@@ -71,7 +76,6 @@ export class SummonerComponent implements OnInit, OnDestroy {
         }
       );
     }
-    
   }
   
   appendItems(startIndex, endIndex) {

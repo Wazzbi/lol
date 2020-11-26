@@ -1,10 +1,10 @@
 export class SummonerSpells {
   type: string;
   version: string;
-  data: Data;
+  data: SummonerSpellList;
 }
 
-export class Data {
+export class SummonerSpellList {
   SummonerBarrier: SummonerSpell;
   SummonerBoost: SummonerSpell;
   SummonerDot: SummonerSpell;

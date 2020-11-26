@@ -10,6 +10,8 @@ const selectSummonerData = (state: State) => state.appState.summoner;
 const selectSummonerLeaguesData = (state: State) => state.appState.summonerLeagues;
 const selectSummonerMatchesData = (state: State) => state.appState.matches;
 
+const selectLoadingLeaguesData = (state: State) => state.appState.loadingLeagues;
+
 export const selectAppState = createSelector(
     selectAppStateData,
     (state: AppState) => state
@@ -28,4 +30,9 @@ export const selectSummonerLeagues = createSelector(
 export const selectSummonerMatches = createSelector(
     selectSummonerMatchesData,
     (state: Match[]) => state
+);
+
+export const selectLoadingLeagues = createSelector(
+    selectLoadingLeaguesData,
+    (state: boolean) => state
 );

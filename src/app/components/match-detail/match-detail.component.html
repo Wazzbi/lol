@@ -1,23 +1,26 @@
-<div class="uk-flex">
+<div class="uk-flex uk-flex-between">
   <section>
     <div class="uk-text-center">
       <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-        <img [src]="championIcon" alt="champ_icon"> 
-          <div class="uk-transition-slide-bottom-small uk-position-bottom uk-overlay uk-overlay-primary">
-              <span class="uk-h5 uk-margin-remove">{{ playerChampName }}</span>
-          </div>
+          <img [src]="championIcon" alt="champ_icon"> 
+            <div class="uk-transition-slide-bottom-small uk-position-bottom uk-overlay uk-overlay-primary">
+                <span class="uk-h5 uk-margin-remove">{{ playerChampName }}</span>
+            </div>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="uk-flex-column">
-    <div>{{ playerTeamData.win | matchResult }}</div>
-    <div>{{ matchDetail.gameDuration | gameDuration }}</div>
-    <div>{{ matchDetail.gameCreation | gameCreation }}</div>
-    <div>{{ matchDetail.gameMode | toCapitalize }}</div>
-    <div>{{ matchDetail.gameType | matchType }}</div>
-  </section>
-  <section class="uk-flex-column">
-    <div>{{ playerData.spell1Id }}</div>
-    <div>{{ playerData.spell2Id }}</div>
-  </section>
+    </section>
+    <section>
+      <div>{{ playerTeamData.win | matchResult }}</div>
+    </section>
+    <section>
+      <div>{{ matchDetail.gameDuration | gameDuration }}</div>
+      <div>{{ matchDetail.gameCreation | gameCreation }}</div>
+      <div>{{ matchDetail.gameMode | toCapitalize }}</div>
+      <div>{{ matchDetail.gameType | matchType }}</div>
+      <div>ZDE BUDE QUEUE TYPE</div>
+    </section>
+    <section>
+      <div>{{ playerData.spell1Id }}</div>
+      <div>{{ playerData.spell2Id }}</div>
+    </section>
 </div>

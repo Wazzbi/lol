@@ -47,6 +47,19 @@
       <!-- second column-->
       <div class="uk-width-expand">
         <div class="uk-flex" >
+          <ng-container *ngIf="((leagues$ | async).length === 0)">
+            <ng-container *ngIf="((loadingLeagues$ | async) === true);else loadingLeagues">
+              <div class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left">
+                <img src="../../../assets/loading.svg" alt="Loading...">
+              </div>
+            </ng-container>
+            <ng-template #loadingLeagues>
+              <div class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left">
+                League not found
+              </div>
+            </ng-template>
+          </ng-container>
+
           <div *ngFor="let league of leagues$ | async" class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left">
             <table class="uk-table uk-table-divider">
               <tbody>
@@ -97,7 +110,7 @@
               <tbody>
                 <tr *ngFor="let matchDetail of matchArray">
                   <app-match-detail
-                    [summonerName]="summonerName"
+                    [summonerId]="summonerId"
                     [matchDetail]="matchDetail"
                   ></app-match-detail>
                 </tr>
@@ -116,7 +129,7 @@
       </ng-container>
       <ng-template #noSearchYet>
         <div class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left">
-          Search for player
+          Search for player...
         </div>
       </ng-template>
     </ng-template>

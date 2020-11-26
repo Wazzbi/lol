@@ -9,7 +9,7 @@ import { champions } from '../../../constants';
   styleUrls: ['./match-detail.component.scss']
 })
 export class MatchDetailComponent implements OnInit {
-  @Input() summonerName: string;
+  @Input() summonerId: string;
   @Input() matchDetail: MatchDetail;
 
   constructor(private backService: BackService) { }
@@ -22,7 +22,7 @@ export class MatchDetailComponent implements OnInit {
   }
 
   get playerId(): number {
-    return this.matchDetail.participantIdentities.find(p => p.player.summonerName === this.summonerName).participantId;
+    return this.matchDetail.participantIdentities.find(p => p.player.summonerId === this.summonerId).participantId;
   }
 
   get playerData(): Participant {
