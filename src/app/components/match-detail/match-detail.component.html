@@ -1,26 +1,23 @@
-<div class="uk-flex uk-flex-between">
+<div class="uk-flex uk-flex-middle uk-flex-between ">
   <section>
-    <div class="uk-text-center">
-      <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-          <img [src]="championIcon" alt="champ_icon"> 
-            <div class="uk-transition-slide-bottom-small uk-position-bottom uk-overlay uk-overlay-primary">
-                <span class="uk-h5 uk-margin-remove">{{ playerChampName }}</span>
-            </div>
-        </div>
-      </div>
-    </section>
-    <section>
-      <div>{{ playerTeamData.win | matchResult }}</div>
-    </section>
-    <section>
-      <div>{{ matchDetail.gameDuration | gameDuration }}</div>
-      <div>{{ matchDetail.gameCreation | gameCreation }}</div>
-      <div>{{ matchDetail.gameMode | toCapitalize }}</div>
-      <div>{{ matchDetail.gameType | matchType }}</div>
-      <div>ZDE BUDE QUEUE TYPE</div>
-    </section>
-    <section>
-      <div>{{ summonerSpellName(playerData.spell1Id) }}</div>
-      <div>{{ summonerSpellName(playerData.spell2Id) }}</div>
-    </section>
+    <img [src]="championIcon" alt="champ_icon" [title]="playerChampName"> 
+  </section>
+  <section class="uk-width-small">
+    <div>{{ playerTeamData.win | matchResult }}</div>
+  </section>
+  <section class="uk-text-small uk-width-small">
+    <div class="spell-icon-small">
+      <img [src]="summonerSpellIcon(summonerSpellName(playerData.spell1Id))" alt="" [title]="summonerSpellName(playerData.spell1Id)">
+    </div>
+    <div class="spell-icon-small">
+      <img [src]="summonerSpellIcon(summonerSpellName(playerData.spell2Id))" alt="" [title]="summonerSpellName(playerData.spell2Id)">
+    </div>
+  </section>
+  <section class="uk-text-small uk-width-small">
+    <div title="Game duration">{{ matchDetail.gameDuration | gameDuration }}</div>
+    <div>{{ matchDetail.gameCreation | gameCreation }}</div>
+    <div>{{ matchDetail.gameMode | toCapitalize }}</div>
+    <div>{{ matchDetail.gameType | matchType }}</div>
+    <div class="queue" [title]="queueDescription(matchDetail.queueId)">{{ queueDescription(matchDetail.queueId) }}</div>
+  </section>
 </div>

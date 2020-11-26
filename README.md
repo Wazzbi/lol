@@ -2,6 +2,7 @@
 
 - do dlaždic na landing page načítat novinky
 - když se nenačtou ligy / match history
+- dragontail constant na path
 
 # Lol
 

@@ -43,4 +43,12 @@ export class MatchDetailComponent implements OnInit {
     return this.backService.getSummonerSpellName(id);
   }
 
+  summonerSpellIcon(name: string) {
+    return this.backService.getSummonerSpellIcon(name);
+  }
+
+  queueDescription(id: number): string {
+    return this.backService.getQueueData(id, 'description');
+  }
+
 }

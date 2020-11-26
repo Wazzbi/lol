@@ -2,6 +2,8 @@ import { SummonerSpell, SummonerSpellList, SummonerSpells } from './../models/su
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { queues } from '../../constants';
+import { Queue } from '../models/queue';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +20,25 @@ export class BackService {
     return `http://localhost/lol/api/dragontail-10.10.5/10.10.3224670/img/champion/${name}.png`;
   }
 
-  // TODO: udělat obalovou funkci v match detail a v html to zkusit
   getSummonerSpellName(id: number): string {
-    console.log('list ', this.summonerSpellsList);
-    console.log('id ', id);
     for (const spellName in this.summonerSpellsList) {
       if (this.summonerSpellsList[spellName].key === id.toString()) {
         return this.summonerSpellsList[spellName].name;
       }
     }
+  }
+
+  getSummonerSpellIcon(name: string): string {
+    // ! exception somehow riot has second name for 'ignite'
+    if (name === 'Ignite') {
+      name = 'Dot';
+    }
+
+    return `http://localhost/lol/api/dragontail-10.10.5/10.10.3224670/img/spell/summoner${name}.png`;
+  }
+
+  getQueueData(id: number, data: 'map'|'description'|'notes'): string {
+    return queues.find((queue: Queue) => queue.queueId === id)[data];
   }
 
 }
