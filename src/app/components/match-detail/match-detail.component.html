@@ -6,12 +6,20 @@
     <div>{{ playerTeamData.win | matchResult }}</div>
   </section>
   <section class="uk-text-small uk-width-small">
-    <div class="spell-icon-small">
-      <img [src]="summonerSpellIcon(summonerSpellName(playerData.spell1Id))" alt="" [title]="summonerSpellName(playerData.spell1Id)">
+    <div class="icon-small">
+      <img [src]="spellIcon(summonerSpellName(playerData.spell1Id), true)" alt="" [title]="summonerSpellName(playerData.spell1Id)">
     </div>
-    <div class="spell-icon-small">
-      <img [src]="summonerSpellIcon(summonerSpellName(playerData.spell2Id))" alt="" [title]="summonerSpellName(playerData.spell2Id)">
+    <div class="icon-small">
+      <img [src]="spellIcon(summonerSpellName(playerData.spell2Id), true)" alt="" [title]="summonerSpellName(playerData.spell2Id)">
     </div>
+  </section>
+  <section class="uk-width-small uk-flex uk-flex-wrap">
+    <img class="icon-small" [src]="itemIcon(playerData.stats.item0)" alt="" [title]="itemName(playerData.stats.item0)">
+    <img class="icon-small" [src]="itemIcon(playerData.stats.item1)" alt="" [title]="itemName(playerData.stats.item1)">
+    <img class="icon-small" [src]="itemIcon(playerData.stats.item2)" alt="" [title]="itemName(playerData.stats.item2)">
+    <img class="icon-small" [src]="itemIcon(playerData.stats.item3)" alt="" [title]="itemName(playerData.stats.item3)">
+    <img class="icon-small" [src]="itemIcon(playerData.stats.item4)" alt="" [title]="itemName(playerData.stats.item4)">
+    <img class="icon-small" [src]="itemIcon(playerData.stats.item5)" alt="" [title]="itemName(playerData.stats.item5)">
   </section>
   <section class="uk-text-small uk-width-small">
     <div title="Game duration">{{ matchDetail.gameDuration | gameDuration }}</div>
