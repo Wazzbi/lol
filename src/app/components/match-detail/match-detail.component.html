@@ -1,25 +1,25 @@
-<div class="uk-flex uk-flex-middle uk-flex-between ">
+<div class="uk-flex uk-flex-middle uk-flex-between">
   <section>
     <img [src]="championIcon" alt="champ_icon" [title]="playerChampName"> 
   </section>
-  <section class="uk-width-small">
-    <div>{{ playerTeamData.win | matchResult }}</div>
+  <section class="width-small uk-flex uk-flex-column uk-flex-center uk-text-center">
+    <div [ngClass]="(playerTeamData.win=='Win')?'uk-text-primary':'uk-text-danger'">{{ playerTeamData.win | matchResult }}</div>
+    <div>{{ playerData.stats.kills }} / {{ playerData.stats.assists }} / {{ playerData.stats.deaths }}</div>
   </section>
-  <section class="uk-text-small uk-width-small">
-    <div class="icon-small">
-      <img [src]="spellIcon(summonerSpellName(playerData.spell1Id), true)" alt="" [title]="summonerSpellName(playerData.spell1Id)">
-    </div>
-    <div class="icon-small">
-      <img [src]="spellIcon(summonerSpellName(playerData.spell2Id), true)" alt="" [title]="summonerSpellName(playerData.spell2Id)">
-    </div>
+  <section class="uk-text-small width-small uk-flex uk-flex-column uk-flex-center">
+    <img class="icon-small" [src]="spellIcon(summonerSpellName(playerData.spell1Id), true)" [title]="summonerSpellName(playerData.spell1Id)" onerror="this.onerror=null;this.src='/assets/placeholder.jpg';">
+    <img class="icon-small" [src]="spellIcon(summonerSpellName(playerData.spell2Id), true)" [title]="summonerSpellName(playerData.spell2Id)" onerror="this.onerror=null;this.src='/assets/placeholder.jpg';">
   </section>
-  <section class="uk-width-small uk-flex uk-flex-wrap">
-    <img class="icon-small" [src]="itemIcon(playerData.stats.item0)" alt="" [title]="itemName(playerData.stats.item0)">
-    <img class="icon-small" [src]="itemIcon(playerData.stats.item1)" alt="" [title]="itemName(playerData.stats.item1)">
-    <img class="icon-small" [src]="itemIcon(playerData.stats.item2)" alt="" [title]="itemName(playerData.stats.item2)">
-    <img class="icon-small" [src]="itemIcon(playerData.stats.item3)" alt="" [title]="itemName(playerData.stats.item3)">
-    <img class="icon-small" [src]="itemIcon(playerData.stats.item4)" alt="" [title]="itemName(playerData.stats.item4)">
-    <img class="icon-small" [src]="itemIcon(playerData.stats.item5)" alt="" [title]="itemName(playerData.stats.item5)">
+  <section class="uk-flex">
+    <div class="items-group uk-flex uk-flex-wrap uk-flex-between">
+      <img class="icon-small" [src]="itemIcon(playerData.stats.item0)" [title]="itemName(playerData.stats.item0)" onerror="this.onerror=null;this.src='/assets/placeholder.jpg';">
+      <img class="icon-small" [src]="itemIcon(playerData.stats.item1)" [title]="itemName(playerData.stats.item1)" onerror="this.onerror=null;this.src='/assets/placeholder.jpg';">
+      <img class="icon-small" [src]="itemIcon(playerData.stats.item2)" [title]="itemName(playerData.stats.item2)" onerror="this.onerror=null;this.src='/assets/placeholder.jpg';">
+      <img class="icon-small" [src]="itemIcon(playerData.stats.item3)" [title]="itemName(playerData.stats.item3)" onerror="this.onerror=null;this.src='/assets/placeholder.jpg';">
+      <img class="icon-small" [src]="itemIcon(playerData.stats.item4)" [title]="itemName(playerData.stats.item4)" onerror="this.onerror=null;this.src='/assets/placeholder.jpg';">
+      <img class="icon-small" [src]="itemIcon(playerData.stats.item5)" [title]="itemName(playerData.stats.item5)" onerror="this.onerror=null;this.src='/assets/placeholder.jpg';">
+    </div>
+    <img class="icon-small" [src]="itemIcon(playerData.stats.item6)" [title]="itemName(playerData.stats.item6)" onerror="this.onerror=null;this.src='./assets/placeholder.jpg';">
   </section>
   <section class="uk-text-small uk-width-small">
     <div title="Game duration">{{ matchDetail.gameDuration | gameDuration }}</div>

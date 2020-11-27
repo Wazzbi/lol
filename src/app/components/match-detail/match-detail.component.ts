@@ -15,6 +15,14 @@ export class MatchDetailComponent implements OnInit {
   constructor(private backService: BackService) { }
 
   ngOnInit() {
+    console.log([
+      this.matchDetail.gameId,
+      this.playerData.stats.item0,
+      this.playerData.stats.item1,
+      this.playerData.stats.item2,
+      this.playerData.stats.item3,
+      this.playerData.stats.item4,
+      this.playerData.stats.item5]);
   }
 
   get championIcon(): string {

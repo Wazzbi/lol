@@ -46,7 +46,7 @@
 
       <!-- second column-->
       <div class="uk-width-expand">
-        <div class="uk-flex" >
+        <div class="uk-flex">
           <ng-container *ngIf="((leagues$ | async).length === 0)">
             <ng-container *ngIf="((loadingLeagues$ | async) === true);else loadingLeagues">
               <div class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left">
@@ -60,7 +60,7 @@
             </ng-template>
           </ng-container>
 
-          <div *ngFor="let league of leagues$ | async" class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left">
+          <div *ngFor="let league of leagues$ | async" class="uk-card uk-card-default uk-card-body uk-width-expand uk-margin-left uk-text-small">
             <table class="uk-table uk-table-divider">
               <tbody>
                 <tr>
