@@ -1,8 +1,7 @@
 /* component-name.component.scss */
 @import 'variables';
-
-.main-image {
-    border-radius: 0 0 50px 50px;
+.main-image{
+    border-radius: 0 0 25px 25px;
 }
 
 .search {
@@ -10,16 +9,11 @@
     border-radius: 15px 0 0 15px;
     background: #c2c2c2;
     box-shadow: inset 5px 5px 10px #888888;
-
     font-size: 14px;
 }
 
 .serch-name {
     border: none;
-    //border-left: 1px solid darkgray;
-    //background: #ffffff;
-    // box-shadow: inset 6px 6px 10px #a3a3a3, 
-    //         inset -6px -6px 10px #e1e1e1;
 }
 
 .search-btn {
@@ -30,5 +24,11 @@
 }
 
 .box-shadow {
-    box-shadow: 0 28px 50px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 28px 50px rgba(0, 0, 0, 0.8);
 }
+
+// .xxx{
+//     background-color: #e9f1f9;
+//     max-width: fit-content;
+//     min-width: 800px;
+// }

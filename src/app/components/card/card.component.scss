@@ -1,11 +1,10 @@
 .card {
-    border-radius: 50px;
-    background: linear-gradient(145deg, #e6e6e6, #ffffff);
-    box-shadow:  20px 20px 60px #d9d9d9, 
-                -20px -20px 60px #ffffff;
-    transition: transform .2s;
+    border-radius: 25px;
+    box-shadow:  9px 9px 18px #c6cdd4, 
+             -9px -9px 18px #ffffff;
+    // transition: transform .2s;
 
-    &:hover {
-        transform: scale(1.1);
-    }
+    // &:hover {
+    //     transform: scale(1.05);
+    // }
 }
