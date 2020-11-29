@@ -8,15 +8,15 @@
 
     <div class="uk-position-small uk-position-bottom uk-overlay uk-text-center uk-flex uk-flex-center">
 
-      <div class="uk-width-small">
-          <select #region class="uk-select search">
-              <option *ngFor="let region of regions">&nbsp;&nbsp;{{ region }}</option>
-          </select>
+      <div class="uk-width-small uk-margin-right">
+        <select #region class="uk-select search uk-text-light">
+            <option *ngFor="let region of regions">&nbsp;&nbsp;{{ region }}</option>
+        </select>
       </div>
 
-      <div class="uk-search uk-search-default uk-background-default uk-width-2-5">
-        <span uk-search-icon></span>
-        <input #player class="uk-search-input serch-name" type="search" placeholder="Player's nickname" (keyup.enter)="searchPlayer(player.value, region.value)">
+      <div class="uk-search uk-search-default uk-background-default uk-width-2-5 serch-name-wraper uk-margin-right">
+        <span uk-search-icon class="search-icon"></span>
+        <input #player class="uk-search-input serch-name  uk-text-light" type="search" placeholder="Player's nickname" (keyup.enter)="searchPlayer(player.value, region.value)">
       </div>
 
       <button class="uk-button uk-button-danger search-btn" (click)="searchPlayer(player.value, region.value)">Search</button>
