@@ -11,6 +11,10 @@
     color: #e9f1f9;
 }
 
+.search-options {
+    background-color: #e9f1f9;
+}
+
 .serch-name-wraper {
     border: none;
     background-color: rgba(0, 0, 0, 0.5);
@@ -41,4 +45,16 @@
 
 .search-icon {
     color: #e9f1f9;
+}
+
+.btn {
+    //border: 1px solid black;
+    border-radius: 20px;
+    margin: 5px;
+    background-color: rgb(102, 60, 255);
+    color: white;
+    box-shadow:  20px 20px 60px #c6cdd4, 
+                -20px -20px 60px #ffffff,
+                5px 5px 15px 5px rgba(0,0,0,0),
+                0px 10px 13px -7px #000000;
 }

@@ -9,6 +9,7 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   @Input() title: string;
+  @Input() imageUrl: string;
 
   ngOnInit() {
   }

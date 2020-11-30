@@ -10,7 +10,7 @@
 
       <div class="uk-width-small uk-margin-right">
         <select #region class="uk-select search uk-text-light">
-            <option *ngFor="let region of regions">&nbsp;&nbsp;{{ region }}</option>
+            <option *ngFor="let region of regions" class="search-options">&nbsp;&nbsp;{{ region }}</option>
         </select>
       </div>
 
@@ -25,7 +25,87 @@
 
   </div>
 
-  <div class="uk-child-width-1-3@m uk-margin-medium-top" uk-grid uk-scrollspy="cls: uk-animation-fade; target: .card; delay: 200;">
+  <div class="uk-flex uk-flex-center uk-margin-top">
+    <button class="uk-button btn"><a class="uk-link-reset" href="" routerLink="/summoners">Champions</a></button>
+    <button class="uk-button btn"><a class="uk-link-reset" href="" routerLink="/summoners">Items</a></button>
+    <button class="uk-button btn"><a class="uk-link-reset" href="" routerLink="/summoners">Maps</a></button>
+    <button class="uk-button btn"><a class="uk-link-reset" href="" routerLink="/summoners">Patch Notes</a></button>
+    <button class="uk-button btn"><a class="uk-link-reset" href="" routerLink="/summoners">Pro Builds</a></button>
+    <button class="uk-button btn"><a class="uk-link-reset" href="" routerLink="/summoners">For beginners</a></button>
+  </div>
+
+  <div class="uk-margin uk-flex">
+
+    <div 
+    class="uk-position-relative uk-visible-toggle uk-width-2-3 box-shadow" 
+    tabindex="-1" 
+    uk-slideshow="animation: push; autoplay: true; finite: false"
+    style="border-radius: 25px;"
+    >
+
+      <ul class="uk-slideshow-items" style="border-radius: 25px;">
+        <li>
+          <img src="../../../assets/y.png" alt="" uk-cover>
+          <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-padding uk-padding-remove-top">
+            <h3 class="uk-margin-remove">Overlay Bottom</h3>
+            <p class="uk-margin-remove">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="uk-margin-remove">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </li>
+        <li>
+          <img src="../../../assets/x.png" alt="" uk-cover>
+          <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-padding uk-padding-remove-top">
+            <h3 class="uk-margin-remove">Overlay Bottom</h3>
+            <p class="uk-margin-remove">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="uk-margin-remove">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </li>
+        <li>
+          <img src="../../../assets/c.png" alt="" uk-cover>
+          <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-padding uk-padding-remove-top">
+            <h3 class="uk-margin-remove">Overlay Bottom</h3>
+            <p class="uk-margin-remove">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="uk-margin-remove">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="uk-position-bottom-center uk-position-small uk-light">
+        <ul class="uk-dotnav">
+          <li uk-slideshow-item="0"><a href="#">Item 1</a></li>
+          <li uk-slideshow-item="1"><a href="#">Item 2</a></li>
+          <li uk-slideshow-item="2"><a href="#">Item 3</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="uk-width-1-3">
+      <div class="uk-margin box-shadow" style="background-image: url(../../../assets/a.png); background-size: cover;  background-position: center; height: 100%; margin-left: 15px; border-radius: 25px;">
+        <div style="border-radius: 25px; height: 100%; background-color: rgba(34, 34, 34, 0.8);">
+          <div class="uk-padding uk-light">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+              <div class="uk-width-auto">
+                  <img class="uk-border-circle" width="40" height="40" src="../../../assets/a.png" style="height: 40px;">
+              </div>
+              <div class="uk-width-expand">
+                  <h3 class="uk-card-title uk-margin-remove-bottom">Title</h3>
+                  <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
+              </div>
+            </div>  
+            <div class="uk-card-body uk-padding-remove-horizontal uk-padding-remove-bottom">
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex ipsa laudantium at pariatur id perspiciatis nihil aliquid, officia adipisci fugiat voluptates, fuga autem quaerat quam porro voluptatem reprehenderit rerum ipsum, omnis consequatur. Ipsa tenetur voluptates officia praesentium labore fugiat perferendis.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+
+  <!-- 
+    <div class="uk-child-width-1-3@m uk-margin-medium-top" uk-grid uk-scrollspy="cls: uk-animation-fade; target: .card; delay: 200;">
 
     <a class="uk-link-reset" routerLink="/summoners">
       <app-card
@@ -55,5 +135,6 @@
     </a> 
     
   </div>
+  -->
 
 </div>
