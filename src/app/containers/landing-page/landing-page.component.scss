@@ -5,7 +5,7 @@
 }
 
 .search {
-    border: 2px solid #e9f1f9;
+    border: 2px solid #d1e8ffc4;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.5);
     color: #e9f1f9;
@@ -19,16 +19,16 @@
     border: none;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 20px;
-    color: #e9f1f9;
+    color: #d1e8ff;
 
     ::placeholder {
-        color: #e9f1f9;
+        color: #d1e8ffc4;
     }
 
     .serch-name {
         border-radius: 20px;
-        border: 2px solid #e9f1f9;
-        color: #e9f1f9;
+        border: 2px solid #d1e8ffc4;
+        color: #d1e8ff;
     }
 }
 
@@ -52,13 +52,9 @@
 }
 
 .btn {
-    //border: 1px solid black;
+    //border: 2px solid black;
     border-radius: 20px;
     margin: 5px;
-    background-color: rgb(102, 60, 255);
-    color: white;
-    box-shadow:  20px 20px 60px #c6cdd4, 
-                -20px -20px 60px #ffffff,
-                5px 5px 15px 5px rgba(0,0,0,0),
-                0px 10px 13px -7px #000000;
+    background-color: transparent;
+    color: black;
 }
